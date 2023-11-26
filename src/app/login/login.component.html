@@ -7,10 +7,10 @@
                         <i class="fas fa-user" style="font-size: 1.5em; margin-right: 10px;"></i>
                         Iniciar Sesión
                     </h1>
-                    <form class="custom-form" >
+                    <form class="custom-form" (ngSubmit)="login()">
                         <div class="mb-3 custom-input">
-                            <input type="email" class="custom-input-field" id="email"
-                                name="email" placeholder="Usuario" required />
+                            <input type="text" style="margin-bottom:15px;text-transform:lowercase;" class="custom-input-field"
+                                placeholder="Usuario" id="username" name="username">
                             <i class="fas fa-envelope custom-input-icon"></i>
                         </div>
                         <div class="mb-3 custom-input">
@@ -18,12 +18,17 @@
                                 name="password" placeholder="Contraseña" required />
                             <i class="fas fa-lock custom-input-icon"></i>
                         </div>
+
                         <div class="text-center" style="margin-top: 10px;">
-                            <a href="/Password" style="color: #777;" >¿Olvidaste tu
+                            <a href="/Usuario" style="color: #777;" (click)="forgotPassword()">Crear usuario</a>
+                        </div>
+
+                        <div class="text-center" style="margin-top: 10px;">
+                            <a href="/Password" style="color: #777;" (click)="forgotPassword()">¿Olvidaste tu
                                 contraseña?</a>
                         </div>
                         <div class="mb-4 text-center" style="margin-top: 20px;">
-                            <button type="submit" class="btn btn-primary btn-lg" 
+                            <button type="submit" class="btn btn-primary btn-lg" (click)="login()"
                                 style="width: 100%;">Ingresar</button>
                         </div>
                     </form>
