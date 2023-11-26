@@ -35,7 +35,7 @@
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: right;">Propietario</th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;"></th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Nuevo</button>
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="modal()">Nuevo</button>
                                   </th>
                                 </tr>
                               </thead>
@@ -100,15 +100,28 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Eliminar</h5>
+                <h5 class="modal-title">Crear nuevo Departamento</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <p >¿Desea eliminar el automóvil del propietario <b class="font-bold"></b> con la placa <b class="font-bold"></b>?</p>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                <div class="form-floating" style="margin: 8%;">
+                    <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                    <label for="name">Nombre del producto</label>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                <div class="form-floating mb-2" style="margin: 8%;">
+                  <select class="form-select filtro-busqueda" id="status" name="status" aria-label="Estatus">
+                    <option ></option>
+                  </select>
+                  <label for="status">Estatus del producto</label>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-danger" >Eliminar</button>
+                <button type="button" class="btn btn-danger" >Guardar</button>
             </div>
         </div>
     </div>

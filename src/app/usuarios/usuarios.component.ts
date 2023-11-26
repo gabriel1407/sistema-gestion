@@ -1,5 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 interface RegisterResponse {
@@ -12,9 +13,6 @@ interface RegisterResponse {
     id: string;
   };
 }
-
-
-
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
