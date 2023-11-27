@@ -1,29 +1,45 @@
 <div class="card-container" style="display: grid;">
   <div class="col-lg-9 offset-lg-2 col-md-8 col-sm-10 col-xs-12">
-    <h1>DEPARTAMENTOS</h1>
-  </div>
-  <div class="col-lg-3 offset-lg-3 col-md-8 col-sm-10 col-xs-12">
+  <h1>TAREAS</h1>
+</div>
+  <div class="col-lg-9 offset-lg-2 col-md-8 col-sm-10 col-xs-12">
     <div class="row justify-content-center" style="margin-top: 32px;">
-      <div class="col-lg-12">
+      <div class="col-lg-3">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar...">
+          <input type="text" class="form-control" placeholder="Buscar departamento">
           <div class="input-group-append">
             <button class="btn btn-primary" type="button">Buscar</button>
           </div>
         </div>
       </div>
-      <!-- <div class="col-lg-3">
+      <div class="col-lg-3">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Departamento">
+          <input type="text" class="form-control" placeholder="Buscar compañía ">
           <div class="input-group-append">
             <button class="btn btn-primary" type="button">Buscar</button>
           </div>
         </div>
-      </div> -->
+      </div>
+      <div class="col-lg-3">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Buscar proyecto">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">Buscar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Buscar empleados">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">Buscar</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+    </div>
     <div class="row" style="margin-top: 32px;justify-content: center">
-        <div class="col-lg-9 offset-lg-1 col-md-8 col-sm-10 col-xs-12" style="display: flex;text-align: center;justify-content: center;">
+        <div class="col-lg-12 offset-lg-1 col-md-8 col-sm-10 col-xs-12" style="display: flex;text-align: center;justify-content: center;">
         <div class="card">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -33,16 +49,14 @@
                                 <tr>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;"></th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Fecha creación</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Nombre del departamento</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Gerente del departamento</th>
+                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Nombre de la tarea</th>
+                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Departamento</th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Empleados</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: center;">Misión</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: right;">compañía</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;"></th>
+                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: center;">Nombre del asignador</th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="modal()">
-                                      <i class="fas fa-plus"></i> Nueva departamento
-                                    </button>
+                                        <i class="fas fa-plus"></i> Nueva tarea
+                                      </button>
                                   </th>
                                 </tr>
                               </thead>
@@ -107,25 +121,42 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Crear nuevo Departamento</h5>
+                <h5 class="modal-title">Crear nueva tarea</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
-                <div class="form-floating" style="margin: 8%;">
-                    <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
-                    <label for="name">Nombre del producto</label>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                <div class="form-floating" style="margin: 6%;">
+                    <input style="text-transform: uppercase;" type="date" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                    <label for="name">Fecha del inicio</label>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
-                <div class="form-floating mb-2" style="margin: 8%;">
+              <div class="form-floating" style="margin: 6%;">
+                  <input style="text-transform: uppercase;" type="date" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                  <label for="name">Fecha fin</label>
+              </div>
+          </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                <div class="form-floating" style="margin: 6%;">
+                    <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                    <label for="name">Nombre del tarea</label>
+                </div>
+            </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
+              <div class="form-floating" style="margin: 6%;">
+                  <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                  <label for="name">Descripcion del tarea</label>
+              </div>
+          </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                <div class="form-floating mb-2" style="margin: 6%;">
                   <select class="form-select filtro-busqueda" id="status" name="status" aria-label="Estatus">
                     <option ></option>
                   </select>
-                  <label for="status">Estatus del producto</label>
+                  <label for="status">Estatus de la tarea</label>
                 </div>
               </div>
-            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-danger" >Guardar</button>
@@ -133,4 +164,5 @@
         </div>
     </div>
 </div>
+
 

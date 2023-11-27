@@ -9,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { GerentComponent } from './gerent/gerent.component';
 import { DepartamentComponent } from './departament/departament.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { CompanyComponent } from './company/company.component';
+import { NewproyectComponent } from './newproyect/newproyect.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     LoginComponent,
     GerentComponent,
     DepartamentComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    EmployeeComponent,
+    CompanyComponent,
+    NewproyectComponent
   ],
   imports: [
     BrowserModule,
