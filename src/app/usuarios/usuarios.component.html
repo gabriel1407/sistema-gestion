@@ -31,17 +31,17 @@
 					<div class="row" style="margin-top:15px;">
 							<div class="col-lg-6 col-md-6  col-sm-6 col-12" style="margin-top:10px;">
 								<label class="font-regular" style="margin-bottom:2px;">Correo electrónico</label>
-								<input type="email" id="email" name="email"  style="text-transform:lowercase;" class="form-control font-regular input-movistar" [(ngModel)]="email" maxlength="60" required autocomplete="off">
+								<input type="email" id="email" name="email"   class="form-control font-regular input-movistar" [(ngModel)]="email" maxlength="60" required autocomplete="off">
 							</div>
 							<div class="col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top:10px; place-self:center;">
 								<div class="form-check form-check-inline">
-									<input type="radio" class="form-check-input" id="btnNatural" name="btnNatural" value="NATURAL" [(ngModel)]="type">
+									<input type="radio" class="form-check-input" id="btnNatural" name="btnNatural" value="Empleado" [(ngModel)]="type">
 									<label class="form-check-label font-regular label-radio-busqueda" for="btnNatural">&nbsp;Empleado</label>
 								</div>
 							</div>
 							<div class="col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top:10px; place-self:center;">
 								<div class="form-check form-check-inline">
-									<input type="radio" class="form-check-input" id="btnJuridica" name="btnJuridica" value="JURIDICO" [(ngModel)]="type">
+									<input type="radio" class="form-check-input" id="btnJuridica" name="btnJuridica" value="Coordinador" [(ngModel)]="type">
 									<label class="form-check-label font-regular label-radio-busqueda"  for="btnJuridica">&nbsp;Coordinador</label>
 								</div>
 							</div>
@@ -55,7 +55,7 @@
 									</div>
 									<div style="width:99%;margin-left:1%;">
 										<label class="font-regular" style="margin-bottom:2px;" for="doc">RIF/CI</label>
-										<input type="text" id="doc" name="doc"  style="text-transform:lowercase;" class="form-control font-regular input-movistar" [(ngModel)]="documento" maxlength="10" onpaste="return false;" oncut="return false;" autocomplete="off">
+										<input type="text" id="doc" name="doc"   class="form-control font-regular input-movistar" [(ngModel)]="documento" maxlength="10" onpaste="return false;" oncut="return false;" autocomplete="off">
 									</div>
 								</div>
 							</div>
@@ -63,11 +63,11 @@
 								<div  style="display:flex">
 									<div style="width:49%;margin-right:1%;">
 										<label class="font-regular" style="margin-bottom:2px;">Nombres</label>
-										<input type="text" id="name" name="name"  style="text-transform:uppercase;" [(ngModel)]="name" class="form-control font-regular input-movistar" maxlength="80"  autocomplete="off">
+										<input type="text" id="name" name="name"   [(ngModel)]="name" class="form-control font-regular input-movistar" maxlength="80"  autocomplete="off">
 									</div>
 									<div style="width:50%;">
 										<label class="font-regular" style="margin-bottom:2px;">Apellidos</label>
-										<input type="text" id="lastName" name="lastName" style="text-transform:uppercase;" [(ngModel)]="last_name" class="form-control font-regular input-movistar" maxlength="80"  autocomplete="off">
+										<input type="text" id="lastName" name="lastName"  [(ngModel)]="last_name" class="form-control font-regular input-movistar" maxlength="80"  autocomplete="off">
 									</div>
 								</div>	
 							</div>

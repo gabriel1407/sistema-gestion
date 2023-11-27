@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { GerentComponent } from './gerent/gerent.component';
 import { DepartamentComponent } from './departament/departament.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { CompanyComponent } from './company/company.component';
 
 const routes: Routes = [
    { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "departament", component: DepartamentComponent, pathMatch: "full" },
   { path: "Password", component: PasswordComponent, pathMatch: "full" },
   { path: "Usuario", component: UsuariosComponent, pathMatch: "full" },
+  { path: "Compañia", component: CompanyComponent, pathMatch: "full" },
 ];
 
 @NgModule({
