@@ -1,8 +1,8 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+
 interface LoginResponse {
   status: number;
   access: boolean;
@@ -13,6 +13,7 @@ interface LoginResponse {
     id: string;
     first_name: string;
     last_name: string;
+    username: string;
     email: string;
   };
   user: {
@@ -20,6 +21,7 @@ interface LoginResponse {
     email: string;
   };
 }
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,86 +33,82 @@ export class LoginComponent {
   errorMessage: string;
   showPassword: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router, private elementRef: ElementRef) {
+  constructor(private http: HttpClient, private router: Router) {
     this.username = '';
     this.password = '';
     this.errorMessage = '';
   }
 
   forgotPassword() {
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      const body = { username: storedUsername };
-      const endpoint = `https://143.198.30.242/companies/change_password/`;
+  const storedUsername = localStorage.getItem('username');
+  console.log(storedUsername);
+  if (storedUsername) {
+    const body = { username: storedUsername };
+    const endpoint = `https://www.metcon7.xyz/companies/change_password/`;
 
-      this.http.post(endpoint, body).subscribe(
-        (response) => {
-          console.log('Solicitud de cambio de contraseña enviada:', response);
-        },
-        (error) => {
-          console.error('Error al enviar la solicitud de cambio de contraseña:', error);
-        }
-      );
-    }
+    this.http.post(endpoint, body).subscribe(
+      (response) => {
+        console.log('Solicitud de cambio de contraseña enviada:', response);
+      },
+      (error) => {
+        console.error('Error al enviar la solicitud de cambio de contraseña:', error);
+      }
+    );
+  } else {
+    // Agregar código adicional en caso de que el nombre de usuario no esté almacenado en el localStorage
   }
+}
 
-  login(): void {
+  login() {
     console.log(this.username);
     console.log(this.password);
-    this.http.post<LoginResponse>(`https://143.198.30.242/companies/login/`, {
+
+    this.http.post<LoginResponse>('https://www.metcon7.xyz/companies/login/', {
       username: this.username,
       password: this.password
     }).subscribe(response => {
       console.log('Login response', response);
+
       if (response.access === true) {
-        let id: number | undefined;
-        if (response && response.data && response.data.rol && response.data.rol.id) {
-          id = parseInt(response.data.rol.id, 10);
-          
-          // // Guardar los datos en el localStorage
-          // localStorage.setItem('userId', String(id));
-          // localStorage.setItem('username', response.user.name);
-          // localStorage.setItem('email', response.user.email);
-          
-          if (id === 1) {
-            // Guardar los datos en el localStorage
-            localStorage.setItem('userId', String(response.data.id));
-            localStorage.setItem('username', response.data.first_name);
-            localStorage.setItem('Userlast_name', response.data.last_name);
-            localStorage.setItem('email', response.data.email);
-            this.router.navigate(['/message']);
-          } else {
-            // Guardar los datos en el localStorage
-            localStorage.setItem('userId', String(response.data.id));
-            localStorage.setItem('username', response.data.first_name);
-            localStorage.setItem('Userlast_name', response.data.last_name);
-            localStorage.setItem('email', response.data.email);
-            this.router.navigate(['/message-cliente']);
-          }
+        const id = parseInt(response.data.rol.id, 10);
+
+        // Guardar los datos en el localStorage
+        localStorage.setItem('userId', response.data.id);
+        localStorage.setItem('first_name', response.data.first_name);
+        localStorage.setItem('last_name', response.data.last_name);
+        localStorage.setItem('email', response.data.email);
+        localStorage.setItem('username', response.data.username);
+
+        if (id === 1) {
+          this.router.navigate(['/gerent']);
+        } else {
+          this.router.navigate(['/gerent']);
         }
       } else {
         console.log('Login error');
+
         if (response.status === 400) {
           Swal.fire({
             icon: 'warning',
             title: 'Error',
-            text: 'El usuario no existe',
+            text: 'El usuario no existe'
           });
         } else {
           Swal.fire({
             icon: 'warning',
             title: 'Error',
-            text: 'Credenciales inválidas',
+            text: 'Credenciales inválidas'
           });
         }
       }
     }, (error: HttpErrorResponse) => {
       console.error('Login error', error);
+
       if (error.status === 400) {
         this.errorMessage = 'El usuario no existe';
       } else {
         this.errorMessage = 'Credenciales inválidas';
       }
     });
-  }  
+  }
 }

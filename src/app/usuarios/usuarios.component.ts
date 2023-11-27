@@ -164,7 +164,7 @@ export class UsuariosComponent {
       } else {
         if(this.type=='Empleado'){
           this.isLoading = true;
-          this.http.post<RegisterResponse>('https://143.198.30.242/users/users/', {
+          this.http.post<RegisterResponse>('https://www.metcon7.xyz/users/users/', {
             username: this.username,
             first_name: this.name,
             last_name: this.last_name,
@@ -198,7 +198,7 @@ export class UsuariosComponent {
             }
           );
         }else{
-          this.http.post<RegisterResponse>('https://143.198.30.242/users/users/', {
+          this.http.post<RegisterResponse>('https://www.metcon7.xyz/users/users/', {
             username: this.username,
             first_name: this.name,
             last_name: this.last_name,

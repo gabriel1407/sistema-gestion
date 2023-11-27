@@ -13,6 +13,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { CompanyComponent } from './company/company.component';
 import { NewproyectComponent } from './newproyect/newproyect.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
