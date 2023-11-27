@@ -7,6 +7,7 @@ import { GerentComponent } from './gerent/gerent.component';
 import { DepartamentComponent } from './departament/departament.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CompanyComponent } from './company/company.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 const routes: Routes = [
    { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: "Password", component: PasswordComponent, pathMatch: "full" },
   { path: "gerent", component: GerentComponent, pathMatch: "full" },
   { path: "departament", component: DepartamentComponent, pathMatch: "full" },
+  { path: "employee", component: EmployeeComponent, pathMatch: "full" },
   { path: "Password", component: PasswordComponent, pathMatch: "full" },
   { path: "Usuario", component: UsuariosComponent, pathMatch: "full" },
   { path: "Compañia", component: CompanyComponent, pathMatch: "full" },

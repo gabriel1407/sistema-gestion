@@ -1,7 +1,9 @@
-import { Component, ElementRef } from '@angular/core';
+
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Component, ElementRef, OnInit } from '@angular/core';;
 
+declare var $: any; // Declaración de la variable $ como global
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -80,5 +82,8 @@ export class CompanyComponent {
           console.error(error);
         }
       );
+  }
+   modal() {
+    $("#modalDeleteCar").modal("show");
   }
 }
