@@ -47,12 +47,9 @@
                         <table id="table-car" class="table table-hover table-mc-light-blue">
                             <thead>
                                 <tr>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;"></th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Fecha creación</th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Nombre de la compañía</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Departamento asignado</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Empleados asignados</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: center;">Nombre del asignador</th>
+                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Estatus</th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="modal()">
                                         <i class="fas fa-plus"></i> Nueva compañía
@@ -64,50 +61,31 @@
                                 <!-- <tr style="display: flex;text-align: center;justify-content: center;">
                                     <h3 class="font-bold" style="color:#d0d6e2;">No hay registros</h3>
                                 </tr>                     -->
-                                <!-- <tr >
+                                <tr *ngFor="let product of company">
                                     <td data-title="Fecha creación"  class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row">
-                                        &nbsp;{{(item.info.created_at)}}
+                                        &nbsp;{{(product.created)}}
                                     </td>
-                                    <td data-title="Placa" *ngIf="item.license_plate!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
-                                        &nbsp;{{item.license_plate}}
+                                    <td data-title="Nombre" *ngIf="product.name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                        &nbsp;{{product.name}}
                                     </td>
-                                    <td data-title="Placa" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.license_plate==null">
+                                    <td data-title="Nombre" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="product.name==null">
                                                         
                                     </td>
-                                    <td data-title="Marca/Carroceria" *ngIf="item.bodywork!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
-                                        &nbsp;
-                                        <label class="font-bold">{{item.bodywork}}&nbsp;</label><br *ngIf="item.bodywork!=null">
-                                        &nbsp;<label>{{item.brand}}&nbsp;</label><br *ngIf="item.brand!=null">
-                                    </td>
-                                    <td data-title="Marca/Carroceria" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.bodywork==null">
-                                                        
-                                    </td>
-                                    <td data-title="Color/Año" *ngIf="item.color!=null || item.year!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row">
-                                        &nbsp;
-                                        <label class="font-bold">{{item.color}}&nbsp;</label><br *ngIf="item.color!=null">
-                                        &nbsp;<label>{{item.year}}&nbsp;</label><br *ngIf="item.year!=null">
-                                    </td>
-                                    <td data-title="Color/Año" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.color==null || item.year==null">
-                                                        
-                                    </td>
-                                    <td data-title="Cap" *ngIf="item.capacity!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-align: center;" scope="row">
-                                        &nbsp;{{item.capacity}}
-                                    </td>
-                                    <td data-title="Cap" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-align: center;" scope="row" *ngIf="item.capacity==null">
-                                                        
-                                    </td>
-                                    
-                                    <td data-title="Línea" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.line_name==null">
-                                                        
-                                    </td>
-                                    <td data-title="Propietario" *ngIf="item.owner_name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-align: end;" scope="row">
-                                        <label *ngIf="item.owner_name!=null" class="font-regular">{{item.owner_name}}</label><br *ngIf="item.owner_id_doc!=null">
-                                        <label *ngIf="item.owner_id_doc!=null" class="font-bold">({{item.owner_id_doc}})<br *ngIf="item.owner_name!=null"></label><br *ngIf="item.owner_id_doc!=null">
-                                    </td>
-                                    <td data-title="Propietario" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-align: end;" scope="row" *ngIf="item.owner_name==null">
-                                                        
-                                    </td>
-                                </tr> -->
+                                    <td data-title="Estatus" *ngIf="product.is_enabled==true" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                      &nbsp;ACTIVO
+                                  </td>
+                                  <td data-title="Estatus" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="product.is_enabled!=true">
+                                        INACTIVO              
+                                  </td>
+                                  <td data-title="DELETE/PUT" *ngIf="product.is_enabled!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                    &nbsp;<button class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="modalDelete()">
+                                      <i class="fas fa-plus"></i> Eliminar compañía
+                                    </button>
+                                </td>
+                                <td data-title="DELETE/PUT" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="product.is_enabled==null">
+                                      INACTIVO              
+                                </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -120,29 +98,47 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Crear nuevo tarea</h5>
+                <h5 class="modal-title">Crear nueva compañía</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
                 <div class="form-floating" style="margin: 8%;">
-                    <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
-                    <label for="name">Nombre del tarea</label>
+                    <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name" [(ngModel)]="name" maxlength="50"  autocomplete=off>
+                    <label for="name">Nombre del compañía</label>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
-                <div class="form-floating mb-2" style="margin: 8%;">
-                  <select class="form-select filtro-busqueda" id="status" name="status" aria-label="Estatus">
-                    <option ></option>
-                  </select>
-                  <label for="status">Estatus de la tarea</label>
-                </div>
+              <div class="form-floating mb-2" style="margin: 8%;">
+                <select class="form-select filtro-busqueda" id="status" name="status" aria-label="Estatus" [(ngModel)]="status">
+                  <option *ngFor="let item of listStatus" [value]="item.value">{{item.name}}</option>
+                </select>
+                <label for="status">Estatus del producto</label>
+              </div>
               </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-danger" >Guardar</button>
+                <button type="button" class="btn btn-danger" (click)="postCompany()">Guardar</button>
             </div>
         </div>
     </div>
 </div>
+<div class="modal" tabindex="-1" id="modalDeleteCar2">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Eliminar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p >¿Desea eliminar la compañía <b class="font-bold"></b>?</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-danger" (click)="deleteCompany()" >Eliminar</button>
+          </div>
+      </div>
+  </div>
+</div>
+

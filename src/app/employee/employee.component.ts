@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+declare var $: any; // Declaración de la variable $ como global
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -73,7 +74,7 @@ export class EmployeeComponent implements OnInit {
     );
   }
 
-  // modal() {
-  //   $("#tareas").modal("show");
-  // }
+  modal() {
+    $("#modalDeleteCar").modal("show");
+  }
 }

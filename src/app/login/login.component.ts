@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -27,8 +27,9 @@ interface LoginResponse {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   username: string;
+  userId: string;
   password: string;
   errorMessage: string;
   showPassword: boolean = false;
@@ -37,8 +38,13 @@ export class LoginComponent {
     this.username = '';
     this.password = '';
     this.errorMessage = '';
+    this.userId='';
   }
-
+  ngOnInit(): void {
+    if (this.userId !== '' && this.userId !== null) {
+        this.router.navigate(['/gerent']);
+    }
+  }
   forgotPassword() {
   const storedUsername = localStorage.getItem('username');
   console.log(storedUsername);
