@@ -13,6 +13,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { CompanyComponent } from './company/company.component';
 import { NewproyectComponent } from './newproyect/newproyect.component';
 import { NewDepartamentComponent } from './new-departament/new-departament.component';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NewDepartamentComponent } from './new-departament/new-departament.compo
     EmployeeComponent,
     CompanyComponent,
     NewproyectComponent,
-    NewDepartamentComponent
+    NewDepartamentComponent,
+    NewTaskComponent
   ],
   imports: [
     BrowserModule,
