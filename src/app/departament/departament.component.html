@@ -13,7 +13,7 @@
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="employe">
           <div class="input-group-append">
-            <button class="btn btn-primary" type="button">Buscar</button>
+            <button class="btn btn-primary" type="button" (click)="getDepartament()">Buscar</button>
           </div>
         </div>
       </div>
@@ -31,10 +31,8 @@
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;"></th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Fecha creación</th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Nombre del departamento</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Gerente del departamento</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Empleados</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: center;">Misión</th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: right;">compañía</th>
+                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Compañía</th>
+                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Estatus</th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;"></th>
                                 </tr>
                               </thead>
@@ -42,50 +40,44 @@
                                 <!-- <tr style="display: flex;text-align: center;justify-content: center;">
                                     <h3 class="font-bold" style="color:#d0d6e2;">No hay registros</h3>
                                 </tr>                     -->
-                                <!-- <tr >
+                                <tr *ngFor="let item of departamentList">
+                                  <td data-title="Fecha creación"  class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row">
+                                    &nbsp;{{(item.everv)}}
+                                </td>
                                     <td data-title="Fecha creación"  class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row">
-                                        &nbsp;{{(item.info.created_at)}}
+                                        &nbsp;{{(item.created)}}
                                     </td>
-                                    <td data-title="Placa" *ngIf="item.license_plate!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
-                                        &nbsp;{{item.license_plate}}
+                                    <td data-title="Nombre" *ngIf="item.name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                        &nbsp;{{item.name}}
                                     </td>
-                                    <td data-title="Placa" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.license_plate==null">
+                                    <td data-title="Nombre" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.name==null">
                                                         
                                     </td>
-                                    <td data-title="Marca/Carroceria" *ngIf="item.bodywork!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                    <td data-title="Compañía" *ngIf="item.company.name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
                                         &nbsp;
-                                        <label class="font-bold">{{item.bodywork}}&nbsp;</label><br *ngIf="item.bodywork!=null">
-                                        &nbsp;<label>{{item.brand}}&nbsp;</label><br *ngIf="item.brand!=null">
+                                        <label class="font-bold">{{item.company.name}}&nbsp;</label><br *ngIf="item.company.name!=null">
                                     </td>
-                                    <td data-title="Marca/Carroceria" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.bodywork==null">
+                                    <td data-title="Compañía" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.company.name==null">
                                                         
                                     </td>
-                                    <td data-title="Color/Año" *ngIf="item.color!=null || item.year!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row">
-                                        &nbsp;
-                                        <label class="font-bold">{{item.color}}&nbsp;</label><br *ngIf="item.color!=null">
-                                        &nbsp;<label>{{item.year}}&nbsp;</label><br *ngIf="item.year!=null">
-                                    </td>
-                                    <td data-title="Color/Año" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.color==null || item.year==null">
-                                                        
-                                    </td>
-                                    <td data-title="Cap" *ngIf="item.capacity!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-align: center;" scope="row">
-                                        &nbsp;{{item.capacity}}
-                                    </td>
-                                    <td data-title="Cap" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-align: center;" scope="row" *ngIf="item.capacity==null">
-                                                        
-                                    </td>
-                                    
-                                    <td data-title="Línea" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.line_name==null">
-                                                        
-                                    </td>
-                                    <td data-title="Propietario" *ngIf="item.owner_name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-align: end;" scope="row">
-                                        <label *ngIf="item.owner_name!=null" class="font-regular">{{item.owner_name}}</label><br *ngIf="item.owner_id_doc!=null">
-                                        <label *ngIf="item.owner_id_doc!=null" class="font-bold">({{item.owner_id_doc}})<br *ngIf="item.owner_name!=null"></label><br *ngIf="item.owner_id_doc!=null">
-                                    </td>
-                                    <td data-title="Propietario" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-align: end;" scope="row" *ngIf="item.owner_name==null">
-                                                        
-                                    </td>
-                                </tr> -->
+                                    <td data-title="Estatus" *ngIf="item.is_enabled==true" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                      &nbsp;ACTIVO
+                                  </td>
+                                  <td data-title="Estatus" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.is_enabled!=true">
+                                        INACTIVO              
+                                  </td>
+                                  <td data-title="DELETE/PUT" *ngIf="item.is_enabled!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                    &nbsp;<button class="btn btn-danger" data-toggle="modal" data-target="#myModal" >
+                                      <i class="fas fa-trash"></i>Eliminar departamento
+                                    </button>
+                                    &nbsp;<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" >
+                                      <i class="fas fa-edit"></i> Editar departamento
+                                    </button>
+                                </td>
+                                <td data-title="DELETE/PUT" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.is_enabled==null">
+                                      INACTIVO              
+                                </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

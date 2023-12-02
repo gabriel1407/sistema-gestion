@@ -11,17 +11,17 @@ declare var $: any;
 export class DepartamentComponent implements OnInit {
   employe: String;
   data: any;
-  employeList: any[] = [];
+  departamentList: any[] = [];
 
   constructor(private http: HttpClient, private elementRef: ElementRef) {
    this.employe='';
    this.data = null;
   }
   ngOnInit() {
-    this.getEmploye();
+ 
   }
-  getEmploye() {
-    this.http.get('https://www.metcon7.xyz/companies/company/')
+  getDepartament() {
+    this.http.get('https://www.metcon7.xyz/companies/departament/')
       .subscribe(
         (response: any) => {
           this.data = response;
@@ -35,7 +35,7 @@ export class DepartamentComponent implements OnInit {
   }
   processData(): void {
     if (this.data && Array.isArray(this.data)) {
-      this.employeList = this.data; 
+      this.departamentList = this.data; 
     }
   }
 
