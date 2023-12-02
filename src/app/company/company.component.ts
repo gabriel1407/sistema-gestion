@@ -33,7 +33,7 @@ export class CompanyComponent implements OnInit {
     this.data = null;
   }
   ngOnInit() {
-    this.getCompany();
+    
   }
   getCompany() {
     this.http.get('https://www.metcon7.xyz/companies/company/')

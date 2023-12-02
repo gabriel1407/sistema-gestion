@@ -19,7 +19,7 @@
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="text-align: end;">
       <div class="form-floating" style="margin: 9px;">
-    &nbsp;<button class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="modalDelete()">
+    &nbsp;<button class="btn btn-danger"  (click)="getCompany()">
       <i class="fas fa-search"></i> Buscar
     </button>
   </div>
@@ -28,7 +28,7 @@
 </div>
 
 </div>
-    <div class="row" style="margin-top: 32px;justify-content: center">
+    <div class="row" style="margin-top: 32px;justify-content: center" *ngIf="company!=null && company.length!=0">
         <div class="col-lg-10 offset-lg-2 col-md-8 col-sm-10 col-xs-12" style="display: flex;text-align: center;justify-content: center;">
         <div class="card">
             <div class="row">
