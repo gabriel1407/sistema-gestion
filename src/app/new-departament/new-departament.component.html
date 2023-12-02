@@ -1,0 +1,160 @@
+<div id="div1" style="margin: 0px; padding: 0px;bottom:0px;position:absolute;width:100%;top:0px;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+            <a class="navbar-brand">
+                <!-- <img src="../assets/metcon2 (1).svg" height="93"> -->
+            </a>
+            <div class="navbar-collapse" id="navbarNav" style="justify-content: flex-end;">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/login" style="display: inline-block;">
+                            <i style="color: #D32F2F" class="fas fa-briefcase"></i> Departamento
+                        </a>
+                        <a class="nav-link" routerLink="/login" style="display: inline-block;">
+                            <i style="color: #D32F2F" class="fas fa-envelope"></i> Email
+                        </a>
+                        <a class="nav-link" routerLink="/login" style="display: inline-block;">
+                            <i style="color: #D32F2F" class="fas fa-sign-out-alt"></i> Salir de sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>                        
+        </nav>
+    </header>
+    <main>
+        <div class="row justify-content-end" style="margin-top: 2rem;">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="text-align:left;place-self: center;">
+                    <h4 class="font-bold d-none d-sm-inline-block" style="margin-bottom:0px;padding-bottom:0px;margin-top:0px;">Nuevo departamento</h4>
+                <h4 class="font-bold d-sm-none" style="margin-bottom:10px;padding-bottom:0px;margin-top:0px;">Nuevo departamento</h4>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12"> 
+            <form style="border:1px solid #ccc; background:#F5F5F5;padding:5px;border-radius:5px;margin-top:10px;padding:10px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12"> 
+                    <div class="row">
+                        <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-12" style="text-align:left;">
+                            <div class="form-floating" style="margin-top:5px;">
+                                <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name" [(ngModel)]="name" maxlength="50"  autocomplete=off [ngModelOptions]="{standalone: true}">
+                                <label for="name">Nombre del departamento</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-12" style="text-align:left;">
+                            <div class="form-floating" style="margin-top:5px;">
+                              <select class="form-select filtro-busqueda" id="status" name="status" aria-label="Estatus" [(ngModel)]="status" [ngModelOptions]="{standalone: true}">
+                                <option *ngFor="let item of listStatus" [value]="item.value">{{item.name}}</option>
+                              </select>
+                              <label for="status">Estatus del departamento</label>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-12 col-12" style="text-align:left;">
+							<h6 style="text-decoration:underline;margin-top: 20px;" *ngIf="listTrayectos.length!=0">Empleado seleccionado:</h6>
+							<div style="display:flex;padding:5px;border:1px solid #bebebe; border-radius:5px;margin-bottom:15px;"  *ngFor="let item of listTrayectos let i = index;">
+								<div style="margin-right:auto;">
+									<h6 style="margin-top:0px;margin-bottom:0px;font-size:14px;">{{item.first_name}} ({{item.last_name}})</h6>
+									<p style="margin-bottom:0px;margin-top:0px;font-size:12px;color:#616161;" *ngIf="item.phone!=null">{{item.phone}}</p>
+                                    <p style="margin-bottom:0px;margin-top:0px;font-size:12px;color:#616161;" *ngIf="item.username!=null">{{item.username}}</p>
+									<h6 style="margin-top:0px;margin-bottom:0px;font-size:14px;color:#f44336;" *ngIf="!item.is_active">SUSPENDIDO</h6>
+								<h6 style="margin-top:0px;margin-bottom:0px;font-size:14px;color:#4caf50;" *ngIf="item.is_active">ACTIVO</h6>
+								</div>
+								<div style="width:25px;">
+									<a  style="cursor:pointer;"><img src="assets/images/cancelar.svg" width="24px" name="dropdownName{{i}}" id="dropdownMenu{{i}}" height="24px"></a>
+								</div>
+							</div>
+                        <div class="card" *ngIf="profileSelectedCompany!=''" style="padding:10px;margin-top: 10px;">
+							<div style="display:flex;  flex-direction: row; justify-content: space-between; align-items: center;">
+								<h6><b class="font-bold" style="margin-right:10px;">Compañía seleccionado:&nbsp;</b>{{profileSelectedCompany.name}}</h6>
+								<div style="display:inline-block; margin-left: 2px;">
+									<img src="assets/images/cancelar.svg" height="15px" style="cursor:pointer; width: 24px; height: 24px;"/>
+								</div>
+							</div>
+						</div>
+
+                    </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                            <h6 style="margin-bottom:2px;margin-top:10px;color:#bdbdbd;font-size:12px;" >Seleccione el empleado</h6>
+                            <div class="input-group">
+                                <input type="text" aria-label="Email" class="form-control" placeholder="Nombre" id="nombre_buscar" name="nombre_buscar" [(ngModel)]="employe" maxlength="60" (keydown.enter)="getEmploye()" [ngModelOptions]="{standalone: true}">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="getEmploye()">Buscar</button>
+                            </div>
+                            <div style="margin-top:15px;" *ngIf="employeList!=null && employeList.length!=0">
+                                <div class="card {{item.classSelected}}" style="margin-bottom:5px;padding:15px;cursor:pointer;" *ngFor="let item of employeList let i = index;" (click)="selectedPropietario(item)">
+                                    <div class="card-body" style="padding:0px;">
+                                        <h6 style="margin-top:0px;margin-bottom:0px;font-size:14px;">{{item.first_name}} {{item.last_name}}</h6>
+                                        <p style="margin-bottom:0px;margin-top:0px;font-size:13px;color:#616161;" *ngIf="item.phone!=null">{{item.phone}}</p>
+                                        <p style="margin-bottom:0px;margin-top:0px;font-size:13px;color:#616161;" *ngIf="item.username!=null">{{item.username}}</p>
+                                    </div>
+                                </div>
+                                <!-- <custom-table 
+                                    [size]="pagingActual.count"
+                                    [labelSize]="'Total'"
+                                    [alignSize]="'alignRight'"
+                                    [totalPage]="detallePorPagina"
+                                    [totalPageRecords]="totalPage"
+                                    [pageSelected]="pageSelected"
+                                    (cantidadTransaccionesTabla)="getCantidadSelected($event)"
+                                    (valueFirst)="getValueFirst($event)"
+                                    (valuePrevious)="getValuePrevious($event)"
+                                    (valueNext)="getValueNext($event)"
+                                    (valueLast)="getValueLast($event)"
+                                    (valueChangeRecords)="getValueChangeRecords($event)"
+                                >
+                                </custom-table>	 -->
+                            </div>
+                            <div style="margin-top:15px;" *ngIf="employeList==null || employeList.length==0" style="vertical-align:middle;padding-top:25px;text-align:center;">
+                                <h6 class="font-bold" style="color:#d0d6e2">No hay representates</h6>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                            <h6 style="margin-bottom:2px;margin-top:10px;color:#bdbdbd;font-size:12px;" >Seleccione el compañía</h6>
+                            <div class="input-group">
+                                <input type="text" aria-label="Email" class="form-control" placeholder="Nombre" id="company" name="company" [(ngModel)]="company" maxlength="60" (keydown.enter)="getCompany()" [ngModelOptions]="{standalone: true}">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="getCompany()">Buscar</button>
+                            </div>
+                            <div style="margin-top:15px;" *ngIf="companyList!=null && companyList.length!=0">
+                                <div class="card {{item.classSelected}}" style="margin-bottom:5px;padding:15px;cursor:pointer;" *ngFor="let item of companyList let i = index;" (click)="selectedCompany(item)">
+                                    <div class="card-body" style="padding:0px;">
+                                        <h6 style="margin-top:0px;margin-bottom:0px;font-size:14px;">{{item.name}}</h6>
+                                        <h6 style="margin-top:0px;margin-bottom:0px;font-size:14px;color:#f44336;" *ngIf="!item.is_enabled">SUSPENDIDO</h6>
+                                        <h6 style="margin-top:0px;margin-bottom:0px;font-size:14px;color:#4caf50;" *ngIf="item.is_enabled">ACTIVO</h6>
+                                    </div>
+                                </div>
+                                <!-- <custom-table 
+                                    [size]="pagingActual.count"
+                                    [labelSize]="'Total'"
+                                    [alignSize]="'alignRight'"
+                                    [totalPage]="detallePorPagina"
+                                    [totalPageRecords]="totalPage"
+                                    [pageSelected]="pageSelected"
+                                    (cantidadTransaccionesTabla)="getCantidadSelected($event)"
+                                    (valueFirst)="getValueFirst($event)"
+                                    (valuePrevious)="getValuePrevious($event)"
+                                    (valueNext)="getValueNext($event)"
+                                    (valueLast)="getValueLast($event)"
+                                    (valueChangeRecords)="getValueChangeRecords($event)"
+                                >
+                                </custom-table>	 -->
+                            </div>
+                            <div style="margin-top:15px;" *ngIf="companyList==null || companyList.length==0" style="vertical-align:middle;padding-top:25px;text-align:center;">
+                                <h6 class="font-bold" style="color:#d0d6e2">No hay compañías disponibles</h6>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row" style="margin-top:10px;justify-content: end;">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                                <button class="btn btn-lg btn-block buttom-movistar-back" style="width:100%" type="button" >Regresar</button>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                                <button class="btn btn-lg btn-block buttom-movistar-primary" style="width:100%"  type="submit" (click)="postDepartament()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>

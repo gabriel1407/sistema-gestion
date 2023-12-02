@@ -2,24 +2,21 @@
   <div class="col-lg-9 offset-lg-2 col-md-8 col-sm-10 col-xs-12">
     <h1>DEPARTAMENTOS</h1>
   </div>
+  <div class="col-lg-12 offset-lg-4 col-md-8 col-sm-10 col-xs-12">
+  <button class="btn btn-primary" routerLink="/new-departament">
+    <i class="fas fa-plus"></i> Nueva departamento
+  </button>
+</div>
   <div class="col-lg-3 offset-lg-3 col-md-8 col-sm-10 col-xs-12">
     <div class="row justify-content-center" style="margin-top: 32px;">
       <div class="col-lg-12">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar...">
+          <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="employe">
           <div class="input-group-append">
             <button class="btn btn-primary" type="button">Buscar</button>
           </div>
         </div>
       </div>
-      <!-- <div class="col-lg-3">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Departamento">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">Buscar</button>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
     <div class="row" style="margin-top: 32px;justify-content: center">
@@ -39,11 +36,6 @@
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: center;">Misión</th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: right;">compañía</th>
                                   <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;"></th>
-                                  <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="modal()">
-                                      <i class="fas fa-plus"></i> Nueva departamento
-                                    </button>
-                                  </th>
                                 </tr>
                               </thead>
                             <tbody>

@@ -8,6 +8,7 @@ import { DepartamentComponent } from './departament/departament.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CompanyComponent } from './company/company.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { NewDepartamentComponent } from './new-departament/new-departament.component';
 
 const routes: Routes = [
    { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: "Password", component: PasswordComponent, pathMatch: "full" },
   { path: "Usuario", component: UsuariosComponent, pathMatch: "full" },
   { path: "Compañia", component: CompanyComponent, pathMatch: "full" },
+  { path: "new-departament", component: NewDepartamentComponent, pathMatch: "full" },
 ];
 
 @NgModule({

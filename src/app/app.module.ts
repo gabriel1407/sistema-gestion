@@ -12,6 +12,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { CompanyComponent } from './company/company.component';
 import { NewproyectComponent } from './newproyect/newproyect.component';
+import { NewDepartamentComponent } from './new-departament/new-departament.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NewproyectComponent } from './newproyect/newproyect.component';
     UsuariosComponent,
     EmployeeComponent,
     CompanyComponent,
-    NewproyectComponent
+    NewproyectComponent,
+    NewDepartamentComponent
   ],
   imports: [
     BrowserModule,
