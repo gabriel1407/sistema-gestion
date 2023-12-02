@@ -114,14 +114,14 @@
 								<h6 style="margin-top:0px;margin-bottom:0px;font-size:14px;color:#4caf50;" *ngIf="item.is_active">ACTIVO</h6>
 								</div>
 								<div style="width:25px;">
-									<a  style="cursor:pointer;"><img src="../assets/images/cancelar.svg" width="24px" name="dropdownName{{i}}" id="dropdownMenu{{i}}" height="24px"></a>
+									<a  style="cursor:pointer;" (click)="deleteEmploye(i)" ><img src="../assets/images/cancelar.svg" width="24px" name="dropdownName{{i}}" id="dropdownMenu{{i}}" height="24px"></a>
 								</div>
 							</div>
                         <div class="card" *ngIf="profileSelectedCompany!=''" style="padding:10px;">
 							<div style="display:flex;  flex-direction: row; justify-content: space-between; align-items: center;">
 								<h6><b class="font-bold" style="margin-right:10px;">Compañía seleccionado:&nbsp;</b>{{profileSelectedCompany.name}}</h6>
 								<div style="display:inline-block; margin-left: 2px;">
-									<img src="../assets/images/cancelar.svg" height="15px" style="cursor:pointer; width: 24px; height: 24px;"/>
+									<img (click)="deleteCompany()" src="../assets/images/cancelar.svg" height="15px" style="cursor:pointer; width: 24px; height: 24px;"/>
 								</div>
 							</div>
 						</div>
@@ -145,7 +145,7 @@
                         </div>
                         <div class="row" style="margin-top:10px;justify-content: end;">
                             <div class="col-lg-3 col-md-3 col-sm-3 col-12">
-                                <button class="btn btn-lg btn-block buttom-movistar-back" style="width:100%" type="button" >Regresar</button>
+                                <button class="btn btn-lg btn-block buttom-movistar-back" style="width:100%" type="button" (click)="goBack()">Regresar</button>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-3 col-12">
                                 <button class="btn btn-lg btn-block buttom-movistar-primary" style="width:100%"  type="submit" (click)="postDepartament()">Guardar</button>

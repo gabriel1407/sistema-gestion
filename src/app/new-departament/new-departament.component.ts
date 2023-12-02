@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 export class NewDepartamentComponent {
   data: any;
   data2:any;
+  index:any;
   name:string;
   profileSelected: any = null;
   profileSelectedCompany: any = null;
@@ -24,7 +26,7 @@ export class NewDepartamentComponent {
     { name: "INACTIVO", value: false }
   ]
   status: boolean;
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private location: Location,private http: HttpClient, private router: Router) {
     this.name = '';
     this.status=true;
     this.employe='';
@@ -150,4 +152,39 @@ export class NewDepartamentComponent {
         }
       );
   }
+  deleteEmploye(index: number) {
+    try {
+        var aux = this.listTrayectos[index];
+        if (aux != null) {
+            for (var i = 0; i < this.employeList.length; i++) {
+                if (this.employeList[i] != null) {
+                    if (this.employeList[i].id == aux.id) {
+                        this.employeList[i].classSelected = null;
+                        break;
+                    }
+                }
+            }
+        }
+        var provi = this.listTrayectos.slice(index + 1);
+        this.listTrayectos = this.listTrayectos.slice(0, index);
+        this.listTrayectos = this.listTrayectos.concat(provi);
+    } catch (er) {
+        // Manejo de errores, si es necesario
+    }
+}
+    deleteCompany(){
+      this.profileSelectedCompany='';
+      if(this.companyList!=null && this.companyList.length!=0){
+        for(var i=0;i<this.companyList.length;i++){
+          if(this.companyList[i]!=null){
+            this.companyList[i].classSelected=null;
+          }
+        }
+      }
+}
+goBack() {
+  this.location.back();
+}
+
+  
 }
