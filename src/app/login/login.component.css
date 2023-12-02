@@ -1,3 +1,44 @@
+@font-face{
+	font-family:Telefonica-Bold;
+	src:url(/assets/fonts/Telefonica-Bold.otf)
+}
+@font-face{
+	font-family:Telefonica-Light;
+	src:url(/assets/fonts/Telefonica-Regular.otf)
+}
+@font-face{
+	font-family:Telefonica-Regular;
+	src:url(/assets/fonts/Telefonica-Regular.otf)
+}
+.font-light{
+	font-family:Telefonica-Light;
+}
+.font-bold{
+	font-family:Telefonica-Bold;
+}
+.font-regular{
+    font-family: Telefonica-Regular;
+}
+.font-extra-light{
+	font-family:Telefonica-ExtraLight;
+}
+
+.font-light {
+  font-family: Telefonica-Light;
+}
+
+.font-bold {
+  font-family: Telefonica-Bold;
+}
+
+.font-regular {
+  font-family: Telefonica-Regular;
+  color:#0B2739 ;
+}
+
+.font-extra-light {
+  font-family: Telefonica-ExtraLight;
+}
 #navbar {
     background: white;
     /* Otros estilos para el navbar */
