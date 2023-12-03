@@ -48,6 +48,16 @@
                                 </a>
                             </div>
                         </li>
+                        <li class="sidebar-main-link active" data-nested-level="0">
+                            <div class="sidebar-main-link-inner active">
+                                <a title class="sidebar-link pull-left a-tooltip  active" data-placement="right" data-original-title="Dashboard" vvv> 
+                                    <span (click)="showEmployeeGerentComponent()">
+                                        <i class="fas fa-user"></i>
+                                        <span class="sidebar-link-text">Nuevo empleado</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -79,11 +89,14 @@
       <div class="row" style="text-align: center;display: flex;justify-content: center;">
         <app-employee *ngIf="showNewGerent"></app-employee>
   </div>
-  <div class="row" style="text-align: center;display: flex;justify-content: center;">
-    <app-company *ngIf="showCompany"></app-company>
-</div>
-<div class="row" style="text-align: center;display: flex;justify-content: center;">
-    <app-newproyect *ngIf="showProjetc"></app-newproyect>
-</div>
+    <div class="row" style="text-align: center;display: flex;justify-content: center;">
+        <app-company *ngIf="showCompany"></app-company>
+    </div>
+    <div class="row" style="text-align: center;display: flex;justify-content: center;">
+        <app-newproyect *ngIf="showProjetc"></app-newproyect>
+    </div>
+    <div class="row" style="text-align: center;display: flex;justify-content: center;">
+        <app-new-employe *ngIf="showEmployee"></app-new-employe>
+    </div>
     
     

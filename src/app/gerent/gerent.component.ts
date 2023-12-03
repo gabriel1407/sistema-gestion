@@ -12,6 +12,7 @@ export class GerentComponent {
   showNewGerent: boolean = true;
   showCompany: boolean= false;
   showProjetc: boolean= false;
+  showEmployee: boolean=false;
 
   constructor(private http: HttpClient, private router: Router, private elementRef: ElementRef) {
     
@@ -22,6 +23,7 @@ export class GerentComponent {
     this.showNewGerent = false;
     this.showCompany=false;
     this.showProjetc=false;
+    this.showEmployee=false;
   }
 
   showNewGerentComponent() {
@@ -29,6 +31,7 @@ export class GerentComponent {
     this.showNewGerent = true;
     this.showCompany=false;
     this.showProjetc=false;
+    this.showEmployee=false;
   }
   
   showCompanyGerentComponent() {
@@ -36,6 +39,7 @@ export class GerentComponent {
     this.showNewGerent = false;
     this.showCompany=true;
     this.showProjetc=false;
+    this.showEmployee=false;
   }
 
   showProjectGerentComponent() {
@@ -43,5 +47,14 @@ export class GerentComponent {
     this.showNewGerent = false;
     this.showCompany=false;
     this.showProjetc=true;
+    this.showEmployee=false;
+  }
+
+  showEmployeeGerentComponent() {
+    this.showDepartament = false;
+    this.showNewGerent = false;
+    this.showCompany=false;
+    this.showProjetc=false;
+    this.showEmployee=true;
   }
 }

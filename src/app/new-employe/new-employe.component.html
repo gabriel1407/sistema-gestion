@@ -1,0 +1,123 @@
+<div id="div1" style="margin: 0px; padding: 0px;bottom:0px;position:absolute;width:100%;top:0px;">
+    <div class="col-lg-8 offset-lg-3 col-md-8 col-sm-10 col-xs-12">
+    <main class="container overflow-auto"> 
+        <div class="rounded">
+            <div class="row" style="margin-top:3rem">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 account-wall">
+                    <div style="text-align:center;margin-bottom:15px;">
+                        <i class="fas fa-user-plus" style="font-size: 150px; color: #D32F2F;"></i>
+                      </div>
+                    <div style="text-align:center;">
+                        <h2 class="font-light texto-movistar">Registro de empleado</h2>
+                    </div>
+                    <div *ngIf="isLoading" class="loading-container">
+                        <i class="fas fa-spinner fa-spin loading-icon"></i> <!-- Icono de carga -->
+                      </div>
+                    <form id="register-movistar" style="padding:20px;" method="post">
+                        <div class="row" style="margin-top:15px;">
+                                <div class="col-lg-6 col-md-6  col-sm-6 col-12" style="margin-top:10px;">
+                                    <label class="font-regular" style="margin-bottom:2px;">Correo electrónico</label>
+                                    <input type="email" id="email" name="email"   class="form-control font-regular input-movistar" [(ngModel)]="email" maxlength="60" required autocomplete="off">
+                                </div>
+                                    <!-- <div class="col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top:10px; place-self:center;">
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" id="btnNatural" name="btnNatural" value="Empleado" [(ngModel)]="type">
+                                            <label class="form-check-label font-regular label-radio-busqueda" for="btnNatural">&nbsp;Empleado</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top:10px; place-self:center;">
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" id="btnJuridica" name="btnJuridica" value="Coordinador" [(ngModel)]="type">
+                                            <label class="form-check-label font-regular label-radio-busqueda"  for="btnJuridica">&nbsp;Coordinador</label>
+                                        </div>
+                                    </div> -->
+                                <div class="col-lg-6 col-md-6  col-sm-6 col-12" style="margin-top:10px;">
+                                    <div  style="display:flex">
+                                        <div>
+                                            <label for="type_id_doc" class="font-regular" style="margin-bottom:2px;">Tipo</label>
+                                            <select class="form-select font-regular input-movistar" id="type_id_doc" name="type_id_doc" [(ngModel)]="type_id_doc" aria-label="Seleccione el tipo" style="width:100px;">
+                                                <option *ngFor="let item of listDocs let i = index;" [value]="item">{{item}}</option>
+                                            </select>	
+                                        </div>
+                                        <div style="width:99%;margin-left:1%;">
+                                            <label class="font-regular" style="margin-bottom:2px;" for="doc">RIF/CI</label>
+                                            <input type="text" id="doc" name="doc"   class="form-control font-regular input-movistar" [(ngModel)]="documento" maxlength="10" onpaste="return false;" oncut="return false;" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6  col-sm-6 col-12" style="margin-top:10px;">
+                                        <div>
+                                            <label class="font-regular" style="margin-bottom:2px;">Nombres</label>
+                                            <input type="text" id="name" name="name"   [(ngModel)]="name" class="form-control font-regular input-movistar" maxlength="80"  autocomplete="off">
+                                        </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6  col-sm-6 col-12" style="margin-top:10px;">  
+                                    <div>
+                                        <label class="font-regular" style="margin-bottom:2px;">Apellidos</label>
+                                        <input type="text" id="lastName" name="lastName"  [(ngModel)]="last_name" class="form-control font-regular input-movistar" maxlength="80"  autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-12" style="margin-top:10px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <label class="font-regular" style="margin-bottom:2px;">Contraseña</label>
+                                            <div class="input-group">
+                                                <input type="{{ showPassword ? 'text' : 'password' }}" id="password" name="password" [(ngModel)]="password"  class="form-control font-regular input-movistar" maxlength="20" onpaste="return false;" oncut="return false;" autocomplete="off" required>
+                                                <span class="input-group-text" style="cursor:pointer;" (click)="togglePasswordVisibility()"><i class="fas fa-eye" style="color:#D32F2F;"></i></span>
+                                              </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <label class="font-regular" style="margin-bottom:2px;">Confirmar contraseña</label>
+                                            <div class="input-group">
+                                                <input type="{{ showConfirmPassword ? 'text' : 'password' }}" id="confirm_password" name="confirm_password" [(ngModel)]="confirm_password" class="form-control font-regular input-movistar" maxlength="20" onpaste="return false;" oncut="return false;" autocomplete="off" required>
+                                                <span class="input-group-text" style="cursor:pointer;" (click)="toggleConfirmPasswordVisibility()"><i class="fas fa-eye" style="color:#D32F2F;"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-12" style="margin-top:10px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6  col-sm-6 col-12" style="margin-top:10px;">
+                                            <label class="font-regular " style="margin-bottom:2px;" for="phone">Teléfono</label>
+                                            <input type="text" id="phone" name="phone" [(ngModel)]="phone" class="form-control font-regular phone input-movistar" (keypress)="allowOnlyNumbers($event)" maxlength="10"/>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="margin-top:10px;" >
+                                            <label class="font-regular" style="margin-bottom:2px;">Usuario</label>
+                                            <div class="input-group">
+                                                <input type="text" id="username" name="username" [(ngModel)]="username" class="form-control font-regular input-movistar" maxlength="20" onpaste="return false;" oncut="return false;" autocomplete="off" required>
+                                            </div>
+                                            <label for="" style="color: red;font-family: inherit;">Debe ingresar su Usuario en el cual iniciar sesión</label>
+                                          </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 col-md-6  col-sm-6 col-12" style="margin-top:10px;">
+                                        <!-- <div  style="display:flex">
+                                            <div style="width:49%;margin-right:1%;">
+                                                <label for="type_id_doc" class="font-regular" style="margin-bottom:2px;">País</label>
+                                                <select class="form-select font-regular input-movistar" id="country" name="country" aria-label="Seleccione el país" >
+                                                    <option *ngFor="let item of listCountry let i = index;" [value]="item.value">{{item.name}}</option>
+                                                </select>	
+                                            </div>
+                                            <div style="width:50%">
+                                                <label class="font-regular " style="margin-bottom:2px;" for="phone">Teléfono</label>
+                                                <input type="text" id="phone" name="phone"  class="form-control font-regular phone input-movistar" maxlength="10"/>
+                                            </div>
+                                        </div> -->
+                                </div>
+                            </div>
+                        <div class="row" style="margin-top:10px;justify-content: end;">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                                <button class="btn btn-lg btn-block buttom-movistar-back" style="width:100%" type="button" (click)="back()">Regresar</button>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                                <button class="btn btn-lg btn-block buttom-movistar-primary" style="width:100%" (click)="register()" type="submit">Registrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+</div>

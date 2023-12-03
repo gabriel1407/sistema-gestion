@@ -14,6 +14,7 @@ import { CompanyComponent } from './company/company.component';
 import { NewproyectComponent } from './newproyect/newproyect.component';
 import { NewDepartamentComponent } from './new-departament/new-departament.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { NewEmployeComponent } from './new-employe/new-employe.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NewTaskComponent } from './new-task/new-task.component';
     CompanyComponent,
     NewproyectComponent,
     NewDepartamentComponent,
-    NewTaskComponent
+    NewTaskComponent,
+    NewEmployeComponent
   ],
   imports: [
     BrowserModule,
