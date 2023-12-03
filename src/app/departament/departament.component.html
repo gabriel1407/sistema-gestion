@@ -61,10 +61,10 @@
                                     <td data-title="Fecha creación"  class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row">
                                         &nbsp;{{(item.created)}}
                                     </td>
-                                    <td data-title="Nombre" *ngIf="item.name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                    <td data-title="Nombre" *ngIf="item.name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;text-transform: uppercase;" scope="row">
                                         &nbsp;{{item.name}}
                                     </td>
-                                    <td data-title="Nombre" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="item.name==null">
+                                    <td data-title="Nombre" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-transform: uppercase;" scope="row" *ngIf="item.name==null">
                                                         
                                     </td>
                                     <td data-title="Compañía" *ngIf="item.company.name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">

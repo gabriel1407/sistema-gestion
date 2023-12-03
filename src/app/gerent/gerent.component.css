@@ -1,24 +1,25 @@
 @charset "UTF-8";
 nav {
-    background-color: #f2f2f2;
+    background-image: linear-gradient(to right, #FF0000, #000000);
     padding: 10px;
-  }
-  
-  nav ul {
+}
+
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
-  
-  nav ul li {
+}
+
+nav ul li {
     display: inline-block;
     margin-right: 10px;
-  }
-  
-  nav ul li a {
-    color: #333;
+}
+
+nav ul li a {
+    color: #FFF; 
     text-decoration: none;
-  }
+}
+
   @font-face{
 	font-family:Telefonica-Bold;
 	src:url(/assets/fonts/Telefonica-Bold.otf)
@@ -32838,15 +32839,20 @@ div.reveal-modal-bg {
 /* line 23, app/assets/stylesheets/custom_bootstrap/_nav_tabs.scss */
 .nav-tabs>li.active {
     padding-bottom: 1px;
-    -webkit-box-shadow: inset 0 -2px 0 #D32F2F;
-    box-shadow: inset 0 -2px 0 #D32F2F;
+    -webkit-box-shadow: inset 0 -2px 0 #00BCD4;
+    box-shadow: inset 0 -2px 0 #00BCD4;
+}
+
+
+.sidebar-main-link-inner.active>a:active {
+    color: #1976D2; /* Azul cuando se presiona (activo) */
 }
 
 /* line 26, app/assets/stylesheets/custom_bootstrap/_nav_tabs.scss */
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:hover,
 .nav-tabs>li.active>a:focus {
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
     border-color: transparent;
     background-color: transparent;
@@ -32883,7 +32889,7 @@ div.reveal-modal-bg {
 /* line 57, app/assets/stylesheets/custom_bootstrap/_nav_tabs.scss */
 .vertical-nav-tabs a.active {
     border-left: 3px solid #D32F2F;
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
     padding-left: 19px;
 }
@@ -35331,7 +35337,7 @@ html {
 
 /* line 512, app/assets/stylesheets/custom_bootstrap/_sidebar.scss */
 .sidebar-main-link-inner.active>a {
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
 }
 
@@ -35792,7 +35798,21 @@ a.sidebar-link,
     .sidebar-collapsed .sidebar-main-link.active {
         background-color: transparent;
     }
+/* Estilos para opciones del menú activas */
+.sidebar-main-link-inner.active>a {
+    color: #D32F2F; /* Rojo cuando está activo */
+    font-weight: 500;
+}
 
+.sidebar-main-link-inner.active>a:hover,
+.sidebar-main-link-inner.active>a:active {
+    color: #1976D2; /* Azul cuando se hace hover o está activo */
+}
+
+/* Estilos para opciones del menú no activas */
+.sidebar-main-link-inner:not(.active)>a {
+    color: #333; /* Color por defecto cuando no está activo */
+}
     /* line 92, app/assets/stylesheets/custom_bootstrap/_sidebar.scss */
     .sidebar-collapsed .sidebar-main-link.active>a {
         color: #fff;
@@ -37627,13 +37647,13 @@ i.role-spinner {
 
 /* line 24, app/assets/stylesheets/meta.scss */
 .meta-attribute.to-dos {
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
 }
 
 /* line 28, app/assets/stylesheets/meta.scss */
 .meta-attribute.to-dos:hover {
-    color: #D32F2F;
+    color: #00BCD4;
 }
 
 /* line 34, app/assets/stylesheets/meta.scss */
@@ -47893,13 +47913,13 @@ ul.ctx-menu a:hover {
 
 /* line 64, app/assets/stylesheets/components/Expenses/_expenses-modal.scss */
 .expense-modal .upload-zone h3 p {
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
 }
 
 /* line 70, app/assets/stylesheets/components/Expenses/_expenses-modal.scss */
 .expense-modal .upload-zone .btn-browse {
-    color: #D32F2F;
+    color: #00BCD4;
     background: white;
     padding-bottom: 5px;
     padding-top: 5px;
@@ -48139,7 +48159,7 @@ ul.ctx-menu a:hover {
 
 /* line 32, app/assets/stylesheets/components/_groupBy-select.scss */
 .groupBy-select-container .select2-container--bootstrap.select2-container--bootstrap .select2-selection__rendered {
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
 }
 
@@ -50106,7 +50126,7 @@ body.has-limited-promo .sidebar-wrapper {
 
 /* line 133, app/assets/stylesheets/components/_memberDialog.scss */
 .rate-changes-container .show-more {
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
 }
 
@@ -69207,7 +69227,7 @@ a.report-section-item .settings-index .setting-section.features .star-report {
 /* line 334, app/assets/stylesheets/controllers/settings.scss */
 .settings-smart-notifications .recommended-notifications-title .view-all {
     cursor: pointer;
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
 }
 
@@ -69453,7 +69473,7 @@ a.report-section-item .settings-index .setting-section.features .star-report {
 
 /* line 544, app/assets/stylesheets/controllers/settings.scss */
 .settings-smart-notifications-dialog .advanced-settings .copy {
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
     cursor: pointer;
 }
@@ -77721,7 +77741,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     z-index: 1;
     border: 1px solid #e4e9ef;
     border-radius: 6px;
-    color: #D32F2F;
+    color: #00BCD4;
     font-weight: 500;
     padding: 4px 7px;
 }

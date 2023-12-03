@@ -15,6 +15,7 @@ import { NewproyectComponent } from './newproyect/newproyect.component';
 import { NewDepartamentComponent } from './new-departament/new-departament.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { NewEmployeComponent } from './new-employe/new-employe.component';
+import { NewProyectGerentComponent } from './new-proyect-gerent/new-proyect-gerent.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { NewEmployeComponent } from './new-employe/new-employe.component';
     NewproyectComponent,
     NewDepartamentComponent,
     NewTaskComponent,
-    NewEmployeComponent
+    NewEmployeComponent,
+    NewProyectGerentComponent
   ],
   imports: [
     BrowserModule,
