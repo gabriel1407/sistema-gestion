@@ -153,6 +153,7 @@ export class NewTaskComponent {
   postTask() {
     const userIds = this.listTrayectos.map(trayecto => trayecto.id);
     const data = {
+      project: this.profileSelectedCompany.id,
       start_day: this.init,
       end_day: this.date,
       name: this.name,
