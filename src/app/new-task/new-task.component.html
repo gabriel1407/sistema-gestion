@@ -33,7 +33,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12"> 
                     <div class="row">
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                 <h6 style="margin-bottom:2px;margin-top:10px;color:#bdbdbd;font-size:12px;" >Seleccione el proyecto</h6>
                                 <div class="input-group">
                                     <input type="text" aria-label="Email" class="form-control" placeholder="Nombre" id="nombre_buscar" name="nombre_buscar" [(ngModel)]="employe" maxlength="60" (keydown.enter)="getEmploye()" [ngModelOptions]="{standalone: true}">
@@ -67,7 +67,7 @@
                                     <h6 class="font-bold" style="color:#d0d6e2">No hay proyectos disponibles</h6>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                 <h6 style="margin-bottom:2px;margin-top:10px;color:#bdbdbd;font-size:12px;" >Seleccione el empleado</h6>
                                 <div class="input-group">
                                     <input type="text" aria-label="Email" class="form-control" placeholder="Nombre" id="nombre_buscar" name="nombre_buscar" [(ngModel)]="employe" maxlength="60" (keydown.enter)="getEmploye()" [ngModelOptions]="{standalone: true}">
@@ -101,7 +101,7 @@
                                     <h6 class="font-bold" style="color:#d0d6e2">No hay representates</h6>
                                 </div>
                             </div>                  
-                          <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align:left;">
+                          <div class="col-lg-4 col-md-6 col-sm-12 col-12" style="text-align:left;">
 							<h6 style="text-decoration:underline;" *ngIf="listTrayectos.length!=0">Empleado seleccionado:</h6>
 							<div style="display:flex;padding:5px;border:1px solid #bebebe; border-radius:5px;margin-bottom:15px;"  *ngFor="let item of listTrayectos let i = index;">
 								<div style="margin-right:auto;">
@@ -125,8 +125,26 @@
 						</div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:left;">
                             <div class="form-floating" style="margin-top:5px;">
+                                <input style="text-transform: uppercase;" type="date" class="form-control filtro-busqueda" id="init" name="init" [(ngModel)]="init" maxlength="50"  autocomplete=off [ngModelOptions]="{standalone: true}">
+                                <label for="name">Fecha inicial</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:left;">
+                            <div class="form-floating" style="margin-top:5px;">
+                                <input style="text-transform: uppercase;" type="date" class="form-control filtro-busqueda" id="date" name="date" [(ngModel)]="date" maxlength="50"  autocomplete=off [ngModelOptions]="{standalone: true}">
+                                <label for="name">Fecha final</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:left;">
+                            <div class="form-floating" style="margin-top:5px;">
                                 <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name" [(ngModel)]="name" maxlength="50"  autocomplete=off [ngModelOptions]="{standalone: true}">
                                 <label for="name">Nombre de la tarea</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:left;">
+                            <div class="form-floating" style="margin-top:5px;">
+                                <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="descripcion" name="descripcion" [(ngModel)]="descripcion" maxlength="50"  autocomplete=off [ngModelOptions]="{standalone: true}">
+                                <label for="name">Descripción de la tarea</label>
                             </div>
                         </div>
                           <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:left;">
@@ -146,7 +164,7 @@
                                 <button class="btn btn-lg btn-block buttom-movistar-back" style="width:100%" type="button" (click)="goBack()">Regresar</button>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-3 col-12">
-                                <button class="btn btn-lg btn-block buttom-movistar-primary" style="width:100%"  type="submit" (click)="postDepartament()">Guardar</button>
+                                <button class="btn btn-lg btn-block buttom-movistar-primary" style="width:100%"  type="submit" (click)="postTask()">Guardar</button>
                             </div>
                         </div>
                     </div>

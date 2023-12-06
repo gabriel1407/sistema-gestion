@@ -17,6 +17,9 @@ export class NewTaskComponent {
   data3: any;
   index:any;
   name:string;
+  init:string;
+  date:string;
+  descripcion: string;
   profileSelected: any = null;
   profileSelectedCompany: any = null;
   proyectList: any[] = [];
@@ -37,6 +40,9 @@ export class NewTaskComponent {
     this.employe='';
     this.company='';
     this.data = null;
+    this.init = '';
+    this.date = '';
+    this.descripcion='';
     this.data2=null;
     this.data3=null;
     this.profileSelected='';
@@ -144,16 +150,20 @@ export class NewTaskComponent {
 			}
 	}
 
-  postDepartament() {
+  postTask() {
     const userIds = this.listTrayectos.map(trayecto => trayecto.id);
     const data = {
+      start_day: this.init,
+      end_day: this.date,
       name: this.name,
+      description: this.descripcion,
+      departament: this.profileSelectedCompany.departament.id,
       is_enabled: this.status,
       company: this.profileSelectedCompany.id,
       user: userIds
     };
 
-    this.http.post('https://www.metcon7.xyz/companies/departament/', data)
+    this.http.post('https://www.metcon7.xyz/task/task/', data)
       .subscribe(
         (response: any) => {
           // Manejar la respuesta del servicio aquí
@@ -161,7 +171,7 @@ export class NewTaskComponent {
           Swal.fire({
             icon: 'success',
             title: 'Éxito',
-            text: 'El departamento fue creado con éxito'
+            text: 'La tarea fue creada con éxito'
           }).then((result) => {
             if (result.isConfirmed) {
               window.location.reload();
