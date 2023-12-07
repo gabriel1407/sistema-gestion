@@ -30,7 +30,7 @@ interface LoginResponse {
 })
 export class LoginComponent implements OnInit{
   username: string;
-  userId: string;
+  userId: any;
   password: string;
   errorMessage: string;
   showPassword: boolean = false;
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit{
     this.username = '';
     this.password = '';
     this.errorMessage = '';
-    this.userId='';
+    this.userId = localStorage.getItem('userId');
   }
   ngOnInit(): void {
     if (this.userId !== '' && this.userId !== null) {

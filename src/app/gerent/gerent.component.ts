@@ -16,10 +16,12 @@ export class GerentComponent {
   showReport: boolean=false;
   userName: any;
   last_name:any;
+  email:any;
 
   constructor(private http: HttpClient, private router: Router, private elementRef: ElementRef) {
     this.userName = localStorage.getItem('first_name');
     this.last_name = localStorage.getItem('last_name');
+    this.email = localStorage.getItem('email');
   }
 
   showDepartamentComponent() {
