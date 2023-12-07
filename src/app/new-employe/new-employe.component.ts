@@ -198,6 +198,38 @@ export class NewEmployeComponent {
                 // Aquí puedes realizar acciones adicionales después del error de registro
               }
             );
+          }else{
+            this.http.post<RegisterResponse>('https://www.metcon7.xyz/users/users/', {
+              username: this.username,
+              first_name: this.name,
+              last_name: this.last_name,
+              email: this.email,
+              ci: this.documento,
+              phone: this.phone,
+              password: this.password,
+              rol: 1
+            }).subscribe(
+              (response) => {
+                // La solicitud se completó con éxito
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Registro exitoso',
+                  text: 'Tu cuenta ha sido registrada correctamente.'
+                });
+                console.log('Registro exitoso:', response);
+                // Aquí puedes realizar acciones adicionales después del registro exitoso
+              },
+              (error: HttpErrorResponse) => {
+                // Ocurrió un error durante la solicitud
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error en el registro',
+                  text: 'Hubo un error al registrar tu cuenta. Por favor, intenta nuevamente.'
+                });
+                console.error('Error en el registro:', error);
+                // Aquí puedes realizar acciones adicionales después del error de registro
+              }
+            );
           }
           }
       }

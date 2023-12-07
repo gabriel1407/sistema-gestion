@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 declare var $: any;
 
@@ -37,8 +38,31 @@ export class NewproyectComponent {
        this.proyectList = this.data; 
      }
    }
- 
+   deleteProyect() {
+    if (this.proyectList) {
+      const endpoint = `https://www.metcon7.xyz/task/project_tasks/${this.proyectList[0].id}/`;
+      this.http.delete(endpoint).subscribe(
+        () => {
+          console.log('Tarea eliminada');
+          const index = this.proyectList.findIndex((t) => t.id === this.proyectList[0].id);
+          if (index !== -1) {
+            this.proyectList.splice(index, 1);
+            $("#modalDeleteCar2").modal("hide");
+            Swal.fire({
+              icon: 'success',
+              title: 'Éxito',
+              text: 'La tarea se ha eliminado exitosamente.',
+            });
+          }
+          this.proyectList = [];
+        },
+        (error) => {
+          console.error('Error al eliminar la tarea:', error);
+        }
+      );
+    }
+  }
    modal() {
-     $("#modalDeleteCar").modal("show");
+     $("#modalDeleteCar2").modal("show");
    }
 }
