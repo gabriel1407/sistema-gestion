@@ -13,6 +13,7 @@ import { NewTaskComponent } from './new-task/new-task.component';
 import { NewEmployeComponent } from './new-employe/new-employe.component';
 import { NewProyectGerentComponent } from './new-proyect-gerent/new-proyect-gerent.component';
 import { TaksEmployeeComponent } from './taks-employee/taks-employee.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
    { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: "new-employee", component: NewEmployeComponent, pathMatch: "full" },
   { path: "new-proyect-gerent", component: NewProyectGerentComponent, pathMatch: "full" },
   { path: "employee_task", component: TaksEmployeeComponent, pathMatch: "full" },
+  { path: "report", component: ReportComponent, pathMatch: "full" },
 ];
 
 @NgModule({
