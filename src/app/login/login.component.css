@@ -45,6 +45,7 @@
     transition: background 0.3s;
 }
 
+
 #navbar:hover {
     background: linear-gradient(to right, #FF4500, #FF8C00);
 }
