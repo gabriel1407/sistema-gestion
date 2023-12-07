@@ -12,6 +12,7 @@ import { NewDepartamentComponent } from './new-departament/new-departament.compo
 import { NewTaskComponent } from './new-task/new-task.component';
 import { NewEmployeComponent } from './new-employe/new-employe.component';
 import { NewProyectGerentComponent } from './new-proyect-gerent/new-proyect-gerent.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
    { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "new-task", component: NewTaskComponent, pathMatch: "full" },
   { path: "new-employee", component: NewEmployeComponent, pathMatch: "full" },
   { path: "new-proyect-gerent", component: NewProyectGerentComponent, pathMatch: "full" },
+  { path: "report", component: ReportComponent, pathMatch: "full" },
 ];
 
 @NgModule({
