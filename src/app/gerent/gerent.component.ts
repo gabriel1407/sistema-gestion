@@ -70,4 +70,23 @@ export class GerentComponent {
     this.showProjetc=false;
     this.showEmployee=false;
   }
+  logout(): void {
+    const userId = localStorage.getItem('userId');
+
+    if (userId) {
+      const logoutUrl = `https://www.metcon7.xyz/companies/logout/${userId}/`;
+
+      this.http.post(logoutUrl, {}).subscribe(
+        () => {
+          localStorage.removeItem('userId'); // Borrar el ID de usuario del localStorage
+          this.router.navigate(['/login']); // Redirigir a la página de inicio de sesión
+        },
+        (error) => {
+          console.error('Error al cerrar sesión:', error);
+        }
+      );
+    } else {
+      console.error('No se encontró el ID de usuario en el localStorage');
+    }
+  }
 }
