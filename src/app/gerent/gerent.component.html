@@ -41,6 +41,16 @@
                         <li class="sidebar-main-link" data-nested-level="0">
                             <div class="sidebar-main-link-inner active">
                                 <a title class="sidebar-link pull-left a-tooltip  active" data-placement="right" data-original-title="Dashboard" vvv> 
+                                    <span (click)="showReportComponent()">
+                                        <i class="fas fa-building"></i>
+                                        <span class="sidebar-link-text">Reporte</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="sidebar-main-link" data-nested-level="0">
+                            <div class="sidebar-main-link-inner active">
+                                <a title class="sidebar-link pull-left a-tooltip  active" data-placement="right" data-original-title="Dashboard" vvv> 
                                     <span (click)="showProjectGerentComponent()">
                                         <i class="fas fa-project-diagram"></i>
                                         <span class="sidebar-link-text">Nuevo proyecto</span>
@@ -97,6 +107,9 @@
     </div>
     <div class="row" style="text-align: center;display: flex;justify-content: center;">
         <app-new-employe *ngIf="showEmployee"></app-new-employe>
+    </div>
+    <div class="row" style="text-align: center;display: flex;justify-content: center;">
+        <app-new-employe *ngIf="showReport"></app-new-employe>
     </div>
     
     

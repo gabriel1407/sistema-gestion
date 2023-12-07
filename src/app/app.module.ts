@@ -16,6 +16,7 @@ import { NewDepartamentComponent } from './new-departament/new-departament.compo
 import { NewTaskComponent } from './new-task/new-task.component';
 import { NewEmployeComponent } from './new-employe/new-employe.component';
 import { NewProyectGerentComponent } from './new-proyect-gerent/new-proyect-gerent.component';
+import { ReportComponent } from './report/report.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { NewProyectGerentComponent } from './new-proyect-gerent/new-proyect-gere
     NewDepartamentComponent,
     NewTaskComponent,
     NewEmployeComponent,
-    NewProyectGerentComponent
+    NewProyectGerentComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

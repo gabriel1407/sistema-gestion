@@ -13,6 +13,7 @@ export class GerentComponent {
   showCompany: boolean= false;
   showProjetc: boolean= false;
   showEmployee: boolean=false;
+  showReport: boolean=false;
   userName: any;
   last_name:any;
 
@@ -59,5 +60,14 @@ export class GerentComponent {
     this.showCompany=false;
     this.showProjetc=false;
     this.showEmployee=true;
+  }
+  
+  showReportComponent() {
+    this.showReport=true;
+    this.showDepartament = false;
+    this.showNewGerent = false;
+    this.showCompany=false;
+    this.showProjetc=false;
+    this.showEmployee=false;
   }
 }
