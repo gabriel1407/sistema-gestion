@@ -102,28 +102,51 @@ export class CompanyComponent implements OnInit {
         }
       );
   }
-
-  deleteCompany(){
-    const userId = localStorage.getItem('userId');
-    this.http.delete(`https://www.metcon7.xyz/companies/company/${userId}`)
-      .subscribe(
-        (response: any) => {
-          // Manejar la respuesta del servicio aquí
-          console.log(response);
-  
-          // Mostrar la alerta de éxito
-          Swal.fire({
-            icon: 'success',
-            title: 'Éxito',
-            text: 'Compañía eliminada con éxito'
+  deleteCompany() {
+    if (this.company) {
+      const endpoint = `https://www.metcon7.xyz/companies/company/${this.company[0].id}/`;
+      this.http.delete(endpoint).subscribe(
+        () => {
+          console.log('Tarea eliminada');
+          const index = this.company.findIndex((t) => t.id === this.company[0].id);
+          if (index !== -1) {
+            this.company.splice(index, 1);
+            $("#modalDeleteCar2").modal("hide");
+            Swal.fire({
+              icon: 'success',
+           title: 'Éxito',
+           text: 'Compañía eliminada con éxito'
           });
+          }
+          this.company = [];
         },
-        (error: HttpErrorResponse) => {
-          // Manejar el error aquí
-          console.error(error);
+        (error) => {
+          console.error('Error al eliminar la compañía:', error);
         }
       );
+    }
   }
+  // deleteCompany(){
+  //   const userId = localStorage.getItem('userId');
+  //   this.http.delete(`https://www.metcon7.xyz/companies/company/${userId}`)
+  //     .subscribe(
+  //       (response: any) => {
+  //         // Manejar la respuesta del servicio aquí
+  //         console.log(response);
+  
+  //         // Mostrar la alerta de éxito
+  //         Swal.fire({
+  //           icon: 'success',
+  //           title: 'Éxito',
+  //           text: 'Compañía eliminada con éxito'
+  //         });
+  //       },
+  //       (error: HttpErrorResponse) => {
+  //         // Manejar el error aquí
+  //         console.error(error);
+  //       }
+  //     );
+  // }
    modal() {
     $("#modalDeleteCar").modal("show");
   }
