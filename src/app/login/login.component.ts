@@ -7,9 +7,7 @@ interface LoginResponse {
   status: number;
   access: boolean;
   data: {
-    rol: {
-      id: string;
-    };
+    rol: string;
     id: string;
     first_name: string;
     last_name: string;
@@ -81,7 +79,7 @@ login() {
     console.log('Login response', response);
 
     if (response.access === true) {
-      const id = parseInt(response.data.rol.id, 10);
+      const id = parseInt(response.data.rol, 10);
 
       // Guardar los datos en el localStorage
       localStorage.setItem('userId', response.data.id);
@@ -89,7 +87,7 @@ login() {
       localStorage.setItem('last_name', response.data.last_name);
       localStorage.setItem('email', response.data.email);
       localStorage.setItem('username', response.data.username);
-      localStorage.setItem('rol', response.data.rol.id);
+      localStorage.setItem('rol', response.data.rol);
 
       if (id === 1) {
         this.router.navigate(['/gerent']);
