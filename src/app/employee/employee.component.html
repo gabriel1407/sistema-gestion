@@ -64,9 +64,9 @@
 
 </div>
 <div class="row" style="margin-top: 32px;justify-content: center" *ngIf="tasks!=null && tasks.length!=0">
- <div *ngIf="loading" class="text-center">
-  <i class="fas fa-spinner fa-spin"></i> Cargando...
-</div>
+  <div *ngIf="loading" class="text-center">
+    <i class="fas fa-spinner fa-spin"></i> Cargando...
+  </div>
   <div class="col-lg-10 offset-lg-2 col-md-8 col-sm-10 col-xs-12" style="display: flex;text-align: center;justify-content: center;">
   <div class="card">
       <div class="row">
@@ -105,12 +105,12 @@
                               <td data-title="Nombre" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-transform: uppercase;" scope="row" *ngIf="product.name==null">
                                                   
                               </td>
-                              <td data-title="Departamento" *ngIf="product.name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;text-transform: uppercase;" scope="row">
-                                &nbsp;{{product.departament}}
-                            </td>
-                            <td data-title="Departamento" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-transform: uppercase;" scope="row" *ngIf="product.name==null">
-                                                
-                            </td>
+                              <td data-title="Departamento" *ngIf="product.project && product.project.departament?.name != null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;text-transform: uppercase;" scope="row">
+                                &nbsp;{{product.project.departament.name}}
+                              </td>
+                              <td data-title="Departamento" *ngIf="!product.project || !product.project.departament || product.project.departament.name == null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-transform: uppercase;" scope="row">
+                                &nbsp;
+                              </td>                          
                               <td data-title="Estatus" *ngIf="product.is_enabled==true" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
                                 &nbsp;ACTIVO
                             </td>
@@ -118,7 +118,7 @@
                                   INACTIVO              
                             </td>
                             <td data-title="DELETE/PUT" *ngIf="product.is_enabled!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
-                              &nbsp;<button class="btn btn-danger" data-toggle="modal" data-target="#myModal" >
+                              &nbsp;<button class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="modalDelete()">
                                 <i class="fas fa-trash"></i>Eliminar tarea
                               </button>
                               &nbsp;<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" >
@@ -138,52 +138,22 @@
 </div>
 </div>
   </div>
-  <div class="modal" tabindex="-1" id="modalDeleteCar">
+  <div class="modal" tabindex="-1" id="modalDeleteCar2">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Crear nueva tarea</h5>
+                <h5 class="modal-title">Eliminar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
-                <div class="form-floating" style="margin: 6%;">
-                    <input style="text-transform: uppercase;" type="date" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
-                    <label for="name">Fecha del inicio</label>
-                </div>
+            <div class="modal-body">
+                <p >¿Desea eliminar la compañía <b class="font-bold"></b>?</p>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
-              <div class="form-floating" style="margin: 6%;">
-                  <input style="text-transform: uppercase;" type="date" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
-                  <label for="name">Fecha fin</label>
-              </div>
-          </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
-                <div class="form-floating" style="margin: 6%;">
-                    <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
-                    <label for="name">Nombre del tarea</label>
-                </div>
-            </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
-              <div class="form-floating" style="margin: 6%;">
-                  <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
-                  <label for="name">Descripcion del tarea</label>
-              </div>
-          </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center;">
-                <div class="form-floating mb-2" style="margin: 6%;">
-                  <select class="form-select filtro-busqueda" id="status" name="status" aria-label="Estatus">
-                    <option ></option>
-                  </select>
-                  <label for="status">Estatus de la tarea</label>
-                </div>
-              </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-danger" (click)="modal()">Guardar</button>
+                <button type="button" class="btn btn-danger" (click)="deleteTask()" >Eliminar</button>
             </div>
         </div>
     </div>
-</div>
+  </div>
 
 
