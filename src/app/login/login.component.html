@@ -13,39 +13,55 @@
             </div>
         </nav>
     </header> -->
-<div class="card-container " style="display: grid;background: radial-gradient(circle at center, black, #1162ac);min-height: 100vh;" >
+<div class="card-container " style="display: grid;min-height: 100vh;" >
     <div class="row justify-content-center" style="margin-top: 50px;">
-        <div class="col-lg-4 col-md-8 col-sm-10 col-xs-12">
+        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12" style="margin-block: -76px;">
+            <img src="../assets/images/metcon2.png">
+        </div>
+        <div class="col-lg-5 col-md-8 col-sm-10 col-xs-12">
             <div class="card">
                 <div class="card-body p-4" style="margin-block: 22px;">
                     <h1 class="text-center mb-4">
-                        <img src="../assets/images/metcon2.png" height="93" width="22%">
                         <!-- <i class="fas fa-user" style="font-size: 1.5em; margin-right: 10px;"></i> -->
                         Iniciar Sesión
                     </h1>
                     <form class="custom-form" (ngSubmit)="login()">
-                        <div class="mb-3 custom-input">
+                        <!-- <div class="mb-3 custom-input">
                             <input type="text" style="margin-bottom:15px;text-transform:lowercase;"
                                 class="custom-input-field" placeholder="Usuario" id="username" name="username"
                                 [(ngModel)]="username">
                             <i class="fas fa-envelope custom-input-icon"></i>
+                        </div> -->
+                        <div class="form-floating col-12">
+                            <input type="text" inputmode="text" id="username" name="username" [(ngModel)]="username"  class="form-control font-regular custom-input-field" maxlength="9" autocomplete="off">
+                            <i class="fas fa-envelope custom-input-icon"></i>
+                            <label for="id_doc">Usuario</label>
                         </div>
-                        <div class="mb-3 custom-input">
+                        <div class="form-floating col-12 custom-input-container" style="margin-block: 10px;">
+                            <input type="password" inputmode="text" id="id_doc" name="id_doc" [(ngModel)]="password" class="form-control font-regular custom-input-field" maxlength="9" autocomplete="off">
+                            <label for="id_doc">Contraseña</label>
+                            <i class="fas fa-lock custom-input-icon"></i>
+                          </div>                          
+                        <!-- <div class="form-floating col-12">
+                            <input type="password" class="custom-input-field" id="password" name="password" required [(ngModel)]="password" />
+                            <i class="fas fa-lock custom-input-icon"></i>
+                            <label for="id_doc">contraseña</label>
+                        </div> -->
+                        <!-- <div class="mb-3 custom-input">
                             <input type="password" class="custom-input-field" id="password" name="password"
                                 placeholder="Contraseña" required [(ngModel)]="password" />
                             <i class="fas fa-lock custom-input-icon"></i>
-                        </div>
-
-                        <div class="text-center" style="margin-top: 10px;">
-                            <a href="/Usuario" style="color: #777;" (click)="forgotPassword()">Crear usuario</a>
-                        </div>
-
-                        <div class="text-center" style="margin-top: 10px;">
-                            <a href="/Password" style="color: #777;" (click)="forgotPassword()">¿Olvidaste tu
-                                contraseña?</a>
-                        </div>
+                        </div> -->
                         <div class="mb-4 text-center" style="margin-top: 20px;">
-                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Ingresar</button>
+                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;text-transform: uppercase;">Ingresar</button>
+                        </div>
+                        <div class="text-center" style="margin-top: 10px;">
+                            <a style="color: #c62828;" (click)="forgotPassword()">¿Aún no eres miembro? <span style="font-weight: bold;text-decoration: underline;" href="/Usuario">Registrar</span></a>
+                        </div>
+
+                        <div class="text-center" style="margin-top: 10px;">
+                            <a style="color: #c62828;" (click)="forgotPassword()">¿No recuerdas tu contraseña? <span style="font-weight: bold; text-decoration: underline;" href="/Password">Recuperar</span>
+                            </a>
                         </div>
                     </form>
                 </div>

@@ -55,7 +55,7 @@
 } */
 
 .card {
-    background: linear-gradient(to bottom right, #f4f5f2, #e0e0e0);
+    background: #eeeeee;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -66,41 +66,23 @@
 .card-body {
     padding: 2rem;
 }
-
-.custom-form {
-    text-align: center;
-    margin-top: 4rem;
-}
-
-.custom-input {
+.custom-input-container {
     position: relative;
-}
-
-.custom-input-field {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    padding: 5px 0;
-    outline: none;
-    background: transparent;
-    width: 100%;
-    color: #333;
-}
-
-.custom-input-icon {
+  }
+  
+  .custom-input-icon {
     position: absolute;
-    top: 52%;
-    right: 5px;
+    top: 50%;
+    right: 10px; /* Ajusta la posición del ícono según tus necesidades */
     transform: translateY(-50%);
-    color: #888;
-}
-
-.custom-input-field:focus {
-    border-bottom: 2px solid #D32F2F;
-}
+    color: #ccc; /* Cambia el color del ícono si es necesario */
+    pointer-events: none; /* Evita que el ícono sea clickeable */
+  }
+  
 
 .btn-primary {
-    background-color: #D32F2F;
-    border-color: #D32F2F;
+    background-color: #283593;
+    border-color: #283593;
     margin-top: 20px;
 }
 
