@@ -34,7 +34,10 @@
 
 </div>
     <div class="row" style="margin-top: 32px;justify-content: center" *ngIf="departamentList!=null && departamentList.length!=0">
-        <div class="col-lg-9 offset-lg-2 col-md-8 col-sm-10 col-xs-12" style="display: flex;text-align: center;justify-content: center;">
+      <div *ngIf="loading" class="text-center">
+        <i class="fas fa-spinner fa-spin"></i> Cargando...
+      </div>
+      <div class="col-lg-9 offset-lg-2 col-md-8 col-sm-10 col-xs-12" style="display: flex;text-align: center;justify-content: center;">
         <div class="card">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

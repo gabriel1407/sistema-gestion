@@ -13,9 +13,12 @@ export class GerentComponent {
   showCompany: boolean= false;
   showProjetc: boolean= false;
   showEmployee: boolean=false;
+  userName: any;
+  last_name:any;
 
   constructor(private http: HttpClient, private router: Router, private elementRef: ElementRef) {
-    
+    this.userName = localStorage.getItem('first_name');
+    this.last_name = localStorage.getItem('last_name');
   }
 
   showDepartamentComponent() {

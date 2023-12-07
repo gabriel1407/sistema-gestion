@@ -54,7 +54,7 @@
 </div>
     <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align: end;">
       <div class="form-floating" style="margin: 9px;">
-    &nbsp;<button class="btn btn-danger"  >
+    &nbsp;<button class="btn btn-danger" (click)="getTasks()" >
       <i class="fas fa-search"></i> Buscar
     </button>
   </div>
@@ -64,6 +64,9 @@
 
 </div>
 <div class="row" style="margin-top: 32px;justify-content: center" *ngIf="tasks!=null && tasks.length!=0">
+ <div *ngIf="loading" class="text-center">
+  <i class="fas fa-spinner fa-spin"></i> Cargando...
+</div>
   <div class="col-lg-10 offset-lg-2 col-md-8 col-sm-10 col-xs-12" style="display: flex;text-align: center;justify-content: center;">
   <div class="card">
       <div class="row">

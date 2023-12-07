@@ -12,6 +12,7 @@ export class DepartamentComponent implements OnInit {
   employe: String;
   data: any;
   departamentList: any[] = [];
+  loading: boolean = false;
 
   constructor(private http: HttpClient, private elementRef: ElementRef) {
    this.employe='';
@@ -21,9 +22,11 @@ export class DepartamentComponent implements OnInit {
  
   }
   getDepartament() {
+    this.loading = true;
     this.http.get('https://www.metcon7.xyz/companies/departament/')
       .subscribe(
         (response: any) => {
+          this.loading = false;
           this.data = response;
           this.processData(); 
           console.log(response);
@@ -34,6 +37,7 @@ export class DepartamentComponent implements OnInit {
       );
   }
   processData(): void {
+    this.loading = false;
     if (this.data && Array.isArray(this.data)) {
       this.departamentList = this.data; 
     }

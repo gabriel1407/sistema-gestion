@@ -20,6 +20,7 @@ interface LoginResponse {
     name: string;
     email: string;
   };
+  message?: string;
 }
 
 @Component({
@@ -65,56 +66,51 @@ export class LoginComponent implements OnInit{
   }
 }
 
-  login() {
-    console.log(this.username);
-    console.log(this.password);
+login() {
+  console.log(this.username);
+  console.log(this.password);
 
-    this.http.post<LoginResponse>('https://www.metcon7.xyz/companies/login/', {
-      username: this.username,
-      password: this.password
-    }).subscribe(response => {
-      console.log('Login response', response);
+  this.http.post<LoginResponse>('https://www.metcon7.xyz/companies/login/', {
+    username: this.username,
+    password: this.password
+  }).subscribe(response => {
+    console.log('Login response', response);
 
-      if (response.access === true) {
-        const id = parseInt(response.data.rol.id, 10);
+    if (response.access === true) {
+      const id = parseInt(response.data.rol.id, 10);
 
-        // Guardar los datos en el localStorage
-        localStorage.setItem('userId', response.data.id);
-        localStorage.setItem('first_name', response.data.first_name);
-        localStorage.setItem('last_name', response.data.last_name);
-        localStorage.setItem('email', response.data.email);
-        localStorage.setItem('username', response.data.username);
+      // Guardar los datos en el localStorage
+      localStorage.setItem('userId', response.data.id);
+      localStorage.setItem('first_name', response.data.first_name);
+      localStorage.setItem('last_name', response.data.last_name);
+      localStorage.setItem('email', response.data.email);
+      localStorage.setItem('username', response.data.username);
 
-        if (id === 1) {
-          this.router.navigate(['/gerent']);
-        } else {
-          this.router.navigate(['/gerent']);
-        }
+      if (id === 1) {
+        this.router.navigate(['/gerent']);
       } else {
-        console.log('Login error');
-
-        if (response.status === 400) {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Error',
-            text: 'El usuario no existe'
-          });
-        } else {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Error',
-            text: 'Credenciales inválidas'
-          });
-        }
+        this.router.navigate(['/gerent']);
       }
-    }, (error: HttpErrorResponse) => {
-      console.error('Login error', error);
+    } else {
+      console.log('Login error');
+      const errorMessage = response.message; // Accede al mensaje de error
 
-      if (error.status === 400) {
-        this.errorMessage = 'El usuario no existe';
-      } else {
-        this.errorMessage = 'Credenciales inválidas';
-      }
+      Swal.fire({
+        icon: 'warning',
+        title: 'Error',
+        text: errorMessage // Utiliza el mensaje de error proporcionado por el servicio
+      });
+    }
+  }, (error: HttpErrorResponse) => {
+    console.error('Login error', error);
+
+    const errorMessage = error.error.message; // Accede al mensaje de error
+
+    Swal.fire({
+      icon: 'warning',
+      title: 'Error',
+      text: errorMessage // Utiliza el mensaje de error proporcionado por el servicio
     });
-  }
+  });
+}
 }

@@ -8,27 +8,30 @@ declare var $: any; // Declaración de la variable $ como global
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-
   tasks: any[] = [];
   newTask: string = '';
-
+  loading: boolean = false;
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.getTasks();
+    this.loading = false; 
   }
 
   getTasks() {
+    this.loading = true; // Activar el indicador de carga
     const endpoint = 'https://www.metcon7.xyz/task/task/';
     this.http.get<any[]>(endpoint).subscribe(
       (response) => {
+        this.loading = false; // Desactivar el indicador de carga cuando se complete la solicitud
         this.tasks = response;
       },
       (error) => {
         console.error('Error al obtener las tareas:', error);
+        this.loading = false; // Asegúrate de desactivar el indicador de carga en caso de error
       }
     );
   }
+  
 
   addTask() {
     const endpoint = 'https://www.metcon7.xyz/task/task/';
