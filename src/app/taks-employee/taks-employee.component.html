@@ -1,0 +1,162 @@
+<div id="div1" style="margin: 0px; padding: 0px;bottom:0px;position:absolute;width:100%;top:0px;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+            <a class="navbar-brand">
+                <!-- <img src="../assets/metcon2 (1).svg" height="93"> -->
+            </a>
+            <div class="navbar-collapse" id="navbarNav" style="justify-content: flex-end;">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" style="display: inline-block;text-transform: uppercase;">
+                            <i  class="fas fa-user"></i> {{userName}} {{last_name}}
+                        </a>
+                        <a class="nav-link" href="mailto:{{email}}" style="display: inline-block;">
+                            <i  class="fas fa-envelope"></i> Email
+                        </a>
+                        <a class="nav-link" (click)="logout()" style="display: inline-block;">
+                            <i  class="fas fa-sign-out-alt"></i> Salir de sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>                        
+        </nav>
+    </header>
+    <div class="card-container" style="display: grid;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;">
+            <h1>TAREAS ASIGNADAS</h1>
+          </div>
+          <div class="col-lg-10 offset-lg-1 col-md-8 col-sm-10 col-xs-12">
+            <div class="card">
+                <div class="row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                    <div class="form-floating" style="margin: 9px;">
+                        <input style="text-transform: uppercase;" type="date" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                        <label for="name">Fecha de creación</label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                  <div class="form-floating" style="margin: 9px;">
+                      <input style="text-transform: uppercase;" type="date" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                      <label for="name">Fecha de fin</label>
+                  </div>
+              </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                  <div class="form-floating" style="margin: 9px;">
+                      <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                      <label for="name">Nombre de la tarea</label>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                <div class="form-floating" style="margin: 9px;">
+                    <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                    <label for="name">Proyecto</label>
+                </div>
+            </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align: center;">
+                <div class="form-floating" style="margin: 9px;">
+                    <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                    <label for="name">Departamento</label>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align: center;">
+              <div class="form-floating" style="margin: 9px;">
+                  <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                  <label for="name">Compañía</label>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align: center;">
+            <div class="form-floating" style="margin: 9px;">
+                <input style="text-transform: uppercase;" type="text" class="form-control filtro-busqueda" id="name" name="name"  maxlength="50"  autocomplete=off>
+                <label for="name">Empleados</label>
+            </div>
+          </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-12" style="text-align: end;">
+                <div class="form-floating" style="margin: 9px;">
+              &nbsp;<button class="btn btn-danger" (click)="getTasks()" >
+                <i class="fas fa-search"></i> Buscar
+              </button>
+            </div>
+            </div>
+              </div>
+          </div>
+          
+          </div>
+
+          <div class="row" style="margin-top: 32px;" *ngIf="tasks!=null && tasks.length!=0">
+            <div *ngIf="loading" class="text-center">
+              <i class="fas fa-spinner fa-spin"></i> Cargando...
+            </div>
+            <div class="col-lg-13 offset-lg-2 col-md-8 col-sm-10 col-xs-12" style="display: flex;">
+            <div class="card">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="table-responsive-vertical shadow-z-1 " style="width:100%;margin-top:15px;overflow-x: clip;">
+                            <table id="table-car" class="table table-hover table-mc-light-blue">
+                                <thead>
+                                    <tr>
+                                      <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Fecha inicial</th>
+                                      <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Fecha final</th>
+                                      <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Nombre de la tarea</th>
+                                      <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Nombre del proyecto</th>
+                                      <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Nombre del Departamento</th>
+                                      <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Nombre de la compañía</th>
+                                      <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;">Estatus</th>
+                                      <th class="font-bold" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:13px;text-align: end;">
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                <tbody>
+                                    <!-- <tr style="display: flex;text-align: center;justify-content: center;">
+                                        <h3 class="font-bold" style="color:#d0d6e2;">No hay registros</h3>
+                                    </tr>                     -->
+                                    <tr *ngFor="let product of tasks">
+                                        <td data-title="Fecha inicial"  class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row">
+                                          &nbsp;{{(product.start_day)}}
+                                      </td>
+                                      <td data-title="Fecha final"  class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row">
+                                        &nbsp;{{(product.end_day)}}
+                                    </td>
+                                    <td data-title="Nombre" *ngIf="product.name!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;text-transform: uppercase;" scope="row">
+                                        &nbsp;{{product.name}}
+                                    </td>
+                                    <td data-title="Nombre" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-transform: uppercase;" scope="row" *ngIf="product.name==null">
+                                                        
+                                    </td>
+                                    <td data-title="proyecto" *ngIf="product.project!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;text-transform: uppercase;" scope="row">
+                                        &nbsp;{{product.project.name}}
+                                    </td>
+                                    <td data-title="proyecto" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-transform: uppercase;" scope="row" *ngIf="product.project==null">
+                                                        
+                                    </td>
+                                        <td data-title="Departamento" *ngIf="product.project && product.project.departament?.name != null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;text-transform: uppercase;" scope="row">
+                                          &nbsp;{{product.project.departament.name}}
+                                        </td>
+                                        <td data-title="Departamento" *ngIf="!product.project || !product.project.departament || product.project.departament.name == null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-transform: uppercase;" scope="row">
+                                          &nbsp;
+                                        </td>  
+                                        <td data-title="Departamento" *ngIf="product.project && product.project.departament.company?.name != null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;text-transform: uppercase;" scope="row">
+                                            &nbsp;{{product.project.departament.company.name}}
+                                          </td>
+                                          <td data-title="Departamento" *ngIf="!product.project || !product.project.departament.company || product.project.departament.company.name == null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;text-transform: uppercase;" scope="row">
+                                            &nbsp;
+                                          </td>                         
+                                        <td data-title="Estatus" *ngIf="product.is_finished==true" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                          &nbsp;FINALIZADA
+                                      </td>
+                                      <td data-title="Estatus" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="product.is_finished!=true">
+                                        &nbsp;PENDIENTE              
+                                      </td>
+                                      <td data-title="DELETE/PUT" *ngIf="product.is_finished!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                        &nbsp;<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" >
+                                          <i class="fas fa-edit"></i>  Finalizar tarea
+                                        </button>
+                                    </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> 
+            </div>
+          </div>
+          </div>
+    </div>
+</div>

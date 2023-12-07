@@ -31,6 +31,7 @@ interface LoginResponse {
 export class LoginComponent implements OnInit{
   username: string;
   userId: any;
+  userRol: any;
   password: string;
   errorMessage: string;
   showPassword: boolean = false;
@@ -40,10 +41,13 @@ export class LoginComponent implements OnInit{
     this.password = '';
     this.errorMessage = '';
     this.userId = localStorage.getItem('userId');
+    this.userRol = localStorage.getItem('rol');
   }
   ngOnInit(): void {
     if (this.userId !== '' && this.userId !== null) {
+      if(this.userRol=='1'){
         this.router.navigate(['/gerent']);
+      }
     }
   }
   forgotPassword() {
@@ -85,11 +89,12 @@ login() {
       localStorage.setItem('last_name', response.data.last_name);
       localStorage.setItem('email', response.data.email);
       localStorage.setItem('username', response.data.username);
+      localStorage.setItem('rol', response.data.rol.id);
 
       if (id === 1) {
         this.router.navigate(['/gerent']);
       } else {
-        this.router.navigate(['/gerent']);
+        this.router.navigate(['/employee_task']);
       }
     } else {
       console.log('Login error');
