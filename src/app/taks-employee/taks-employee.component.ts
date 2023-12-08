@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
+declare var $: any; // Declaración de la variable $ como global
 
 @Component({
   selector: 'app-taks-employee',
@@ -17,6 +18,8 @@ export class TaksEmployeeComponent {
   last_name:any;
   userId:any;
   email:any;
+  users:any[] = [];
+  user:any;
   
   constructor(private http: HttpClient, private router: Router, private elementRef: ElementRef) {
     this.userName = localStorage.getItem('first_name');
@@ -64,5 +67,46 @@ export class TaksEmployeeComponent {
       console.error('No se encontró el ID de usuario en el localStorage');
     }
   }
+  updateTask(taskId: number) {
+    if (this.tasks) {
+      const endpoint = `https://www.metcon7.xyz/task/task/${taskId}/`;
+      const userIds: number[] = [];
+        if (this.tasks) {
+          this.tasks.forEach((task: any) => {
+            if (task.user) {
+              task.user.forEach((user: any) => {
+                if (user && user.id) {
+                  userIds.push(user.id);
+                }
+              });
+            }
+          });
+        }
+      const data = {
+        is_finished:true,
+        user:userIds
+      };
+      this.http.put(endpoint, data).subscribe(
+        (response: any) => {
+          const updatedTaskIndex = this.tasks.findIndex((task) => task.id === taskId);
+          if (updatedTaskIndex !== -1) {
+            this.tasks[updatedTaskIndex] = response;
+          }
+          $("#modalDeleteCar2").modal("hide");
+          Swal.fire({
+            icon: 'success',
+         title: 'Éxito',
+         text: 'Tarea actualizada con éxito'
+        });
+        },
+        (error: HttpErrorResponse) => {
+          console.error(error);
+        }
+      );
+    }
+  }
   
+  modalPut() {
+    $("#modalDeleteCar2").modal("show");
+  }
 }

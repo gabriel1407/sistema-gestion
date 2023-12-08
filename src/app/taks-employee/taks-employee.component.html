@@ -86,7 +86,7 @@
             <div *ngIf="loading" class="text-center">
               <i class="fas fa-spinner fa-spin"></i> Cargando...
             </div>
-            <div class="col-lg-13 offset-lg-2 col-md-8 col-sm-10 col-xs-12" style="display: flex;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;justify-content: center;">
             <div class="card">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="table-responsive-vertical shadow-z-1 " style="width:100%;margin-top:15px;overflow-x: clip;">
@@ -145,8 +145,8 @@
                                       <td data-title="Estatus" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:11px;" scope="row" *ngIf="product.is_finished!=true">
                                         &nbsp;PENDIENTE              
                                       </td>
-                                      <td data-title="DELETE/PUT" *ngIf="product.is_finished!=null" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
-                                        &nbsp;<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" >
+                                      <td data-title="DELETE/PUT" *ngIf="product.is_finished!=true" class="font-regular" style="padding-top:10px;padding-bottom:10px;word-wrap: break-word;font-size:12px;" scope="row">
+                                        &nbsp;<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" (click)="modalPut()">
                                           <i class="fas fa-edit"></i>  Finalizar tarea
                                         </button>
                                     </td>
@@ -159,4 +159,25 @@
           </div>
           </div>
     </div>
+</div>
+<div class="modal" tabindex="-1" id="modalDeleteCar2">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Finalizar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p >¿Desea finalizar la tarea <b class="font-bold"></b>?</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <div *ngFor="let task of tasks">
+                <button *ngIf="!task.is_finished" type="button" class="btn btn-danger" (click)="updateTask(task.id)">Finalizar</button>
+              </div>
+              
+
+          </div>
+      </div>
+  </div>
 </div>
