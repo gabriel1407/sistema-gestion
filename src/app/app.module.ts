@@ -18,6 +18,7 @@ import { NewEmployeComponent } from './new-employe/new-employe.component';
 import { NewProyectGerentComponent } from './new-proyect-gerent/new-proyect-gerent.component';
 import { ReportComponent } from './report/report.component';
 import { TaksEmployeeComponent } from './taks-employee/taks-employee.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TaksEmployeeComponent } from './taks-employee/taks-employee.component';
     NewEmployeComponent,
     NewProyectGerentComponent,
     ReportComponent,
-    TaksEmployeeComponent
+    TaksEmployeeComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
